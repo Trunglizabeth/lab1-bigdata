@@ -1,0 +1,8 @@
+# Namespace chính
+export NS=bd-g01
+
+# Storage Image - SeaweedFS
+export STORAGE_IMAGE='chrislusf/seaweedfs@sha256:d7f3fdf6fb9c9375551e95bc985abae74a157789d868341e9e84a999ed8ea21c'
+
+# Client Image - s3lab
+export CLIENT_IMAGE='trunglizabeth/s3lab@sha256:b9e7cf4d42d76b3c6e238ba4c4163bab5324ade9160ca4b5cd826d6bdcfabe93'

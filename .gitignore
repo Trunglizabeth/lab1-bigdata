@@ -1,4 +1,5 @@
 private/
 *.env
-kubeconfig*
 observer.json
+kubeconfig*
+__pycache__/
