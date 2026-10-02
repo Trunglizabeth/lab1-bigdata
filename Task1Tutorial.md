@@ -18,4 +18,3 @@ Ai làm Task 2–5 cũng phải chạy lại Task 1 trước trên cluster của
 | 4 · Đo lường | Tất Tú | `kubectl top pod` (metrics-server) để lấy mẫu tài nguyên; budget để giải thích bottleneck CPU |
 | 5 · Recovery | Hải Anh | Quota `pods: 10` đủ chỗ cho Pod storage mới khi thay Pod; PVC đã tính trong `requests.storage` |
 
-Có lỗi thì xem mục 7 và mục 9 trước, sau đó gửi output lệnh vào nhóm.
