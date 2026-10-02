@@ -95,7 +95,7 @@ git --version
 ```bash
 gh auth login        # chọn GitHub.com → HTTPS → Login with a web browser
 cd ~
-git clone https://github.com/<github-user-cua-Trung>/lab1-bigdata.git
+git clone https://github.com/Trunglizabeth/lab1-bigdata.git
 cd lab1-bigdata
 git config --global user.name "Ten Cua Ban"
 git config --global user.email "email-github@example.com"
