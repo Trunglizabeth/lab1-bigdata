@@ -1,0 +1,4 @@
+private/
+*.env
+kubeconfig*
+observer.json
