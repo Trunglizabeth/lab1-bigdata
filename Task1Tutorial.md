@@ -1,4 +1,4 @@
-## 10. Thành viên khác chạy lại task 1
+Thành viên khác chạy lại task 1
 
 Ai làm Task 2–5 cũng phải chạy lại Task 1 trước trên cluster của mình, vì storage và client phải nằm trong quota. Mất khoảng 5 phút. Đây là bản luyện tập: **không commit `evidence/` từ máy cá nhân**.
 
