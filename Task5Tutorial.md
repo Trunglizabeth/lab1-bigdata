@@ -138,7 +138,7 @@ S06 cần HTTP 200 và hash fixture đúng. S08/S10 cần **HTTP 403 `AccessDeni
 
 ## 5. Bàn giao và giới hạn kết luận
 
-Dùng [mẫu recovery summary](templates/recovery-summary.example.json) để điền **giá trị đo thật** vào `recovery-summary.json`. Đặt link tới raw evidence trong [mẫu evidence index](templates/evidence-index.example.md). Tạo một governance record cho **mỗi bucket** theo [mẫu governance](templates/governance.example.json); thay placeholder bằng mã sinh viên, người duyệt, người cleanup, ngày cleanup dự kiến và commit policy thực. Kiểm tra JSON bằng `python3 -m json.tool <file>` trước khi nộp. Không đưa access key, secret key, token, `private/` hay kubeconfig vào Git.
+Dùng [mẫu recovery summary](templates/recovery-summary.example.json) để điền **giá trị đo thật** vào `recovery-summary.json`. Sao chép [mẫu evidence index](templates/evidence-index.example.md) thành `evidence/INDEX.md` của buổi chạy chính thức và điền đường dẫn raw evidence cho Tasks 1–5. Tạo một governance record cho **mỗi bucket** theo [mẫu governance](templates/governance.example.json); thay placeholder bằng mã sinh viên, người duyệt, người cleanup, ngày cleanup dự kiến và commit policy thực. Chạy `python3 -m json.tool recovery-summary.json` và `python3 -m json.tool governance.json` trước khi nộp. Không đưa access key, secret key, token, `private/` hay kubeconfig vào Git.
 
 Ghi rõ giới hạn: một storage replica dùng cùng PVC trên cùng node chỉ chứng minh thay Pod có kiểm soát; chưa chứng minh HA, backup/restore, crash consistency, node-loss durability, TLS hay mã hóa lưu trữ. Quota giới hạn tài nguyên khai báo, không giới hạn byte bên trong S3.
 

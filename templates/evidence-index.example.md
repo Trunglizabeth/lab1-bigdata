@@ -4,6 +4,13 @@ Thay `<...>` bằng người vận hành, người kiểm tra chéo và kết qu
 
 | Kết luận cần kiểm chứng | Raw evidence | Người chạy / kiểm tra chéo | Kết quả thực tế |
 | --- | --- | --- | --- |
+| Môi trường và phiên bản Kubernetes | `evidence/versions.yaml` | `<...>` | `<context, client/server version>` |
+| Task 1: Pod hợp lệ được nhận, Pod vượt quota bị từ chối | `evidence/quota-before.yaml`, `evidence/quota-positive.txt`, `evidence/quota-reject.txt`, `evidence/budget.md` | `<...>` | `<Running; exceeded quota; budget>` |
+| Task 2: Service riêng, PVC Bound và imageID | `manifests/store-applied.yaml`, `evidence/topology.txt`, `evidence/T2-provenance.json`, `evidence/T2-storageclass.txt` | `<...>` | `<1 Ready, ClusterIP 8333, PVC 4Gi>` |
+| Task 2: hai bucket, fixture và hai lần đọc đúng hash | `evidence/seed.jsonl`, `evidence/T2-ingestor-read-raw.json`, `evidence/T2-analyst-read-release.json` | `<...>` | `<4 PUT, 2 GET, SHA-256>` |
+| Task 3: 12 S3, 6 RBAC, 4 network | `security-results.csv`, `evidence/S*.json`, `evidence/K*.txt`, `evidence/N*.json` | `<...>` | `<22 kết quả; nêu các lần sửa>` |
+| Governance: trách nhiệm, phân loại, retention và policy | `governance.json`, `policies-redacted.json`, `contribution.csv` | `<...>` | `<hai bucket, mã sinh viên, ngày cleanup, commit policy>` |
+| Task 4: sáu trial và mẫu tài nguyên | `evidence/r*-c*.jsonl`, `evidence/benchmark-summary.csv`, `evidence/resource-samples.txt` | `<...>` | `<192 PUT, 192 GET nếu đủ; median/ratio>` |
 | 32 object đúng hash trước thay Pod | `evidence/before-recovery.jsonl` | `<operator> / <reviewer>` | `<32/32 hoặc thực tế>` |
 | Pod UID đổi, một Pod mới Ready | `evidence/pod-before.json`, `evidence/pod-after.json`, `evidence/rollout-time.txt` | `<...>` | `<UID cũ → UID mới; thời điểm rollout>` |
 | PVC UID giữ nguyên và Bound | `evidence/pvc-before.json`, `evidence/pvc-after.json` | `<...>` | `<UID trước = UID sau>` |
