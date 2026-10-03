@@ -2,6 +2,8 @@ Thành viên khác chạy lại task 1
 
 Ai làm Task 2–5 cũng phải chạy lại Task 1 trước trên cluster của mình, vì storage và client phải nằm trong quota. Mất khoảng 5 phút. Đây là bản luyện tập: **không commit `evidence/` từ máy cá nhân**.
 
+> **Đã chạy Task 2 rồi?** Quota sẽ không còn `Used` toàn 0. Chạy `sh src/reset_task2.sh` (gõ `reset`) để về đúng trạng thái kỳ vọng của Task 1. Chỉ dùng trên cluster luyện tập.
+
 1. Cài môi trường theo `SETUP.md` (WSL, Docker Desktop, kubectl, k3d), tạo cluster `bigdata` và namespace `bd-g01`, `bd-outsider`.
 2. Lấy code mới nhất: `git clone` (lần đầu) hoặc `git pull`, rồi `cd ~/lab1-bigdata && source env.sh`.
 3. Apply guardrails: `envsubst '${NS}' < manifests/guardrails.yaml | kubectl -n "$NS" apply -f -`.
