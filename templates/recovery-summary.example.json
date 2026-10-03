@@ -1,0 +1,20 @@
+{
+  "pod_uid_before": null,
+  "pod_uid_after": null,
+  "pod_uid_changed": null,
+  "pvc_uid_before": null,
+  "pvc_uid_after": null,
+  "pvc_uid_unchanged": null,
+  "node_before": null,
+  "node_after": null,
+  "verified_before": null,
+  "verified_after": null,
+  "delete_time_utc": null,
+  "failed_reads": null,
+  "first_failure_start_s": null,
+  "stable_read_end_s": null,
+  "observed_interruption_s": null,
+  "sampling_limit": "Canary reads approximately once per second; request durations vary. Observed interruption is not exact downtime.",
+  "policy_retests": ["S06", "S08", "S10"],
+  "unproven": ["high availability", "backup restore", "crash consistency", "node-loss durability"]
+}
