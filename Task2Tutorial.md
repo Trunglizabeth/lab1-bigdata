@@ -6,6 +6,8 @@
 
 **Cách đọc:** mỗi bước có 1 khối lệnh, các lệnh được đánh số `①②③…`. Bảng ngay dưới cho biết từng lệnh phải ra gì. Nếu khác → làm theo cột *Nếu khác*, không chạy bước tiếp theo.
 
+**Output khó đọc** (quota, kết quả S3 dạng JSON, UID/digest) được đưa qua `src/fmt.py` để in thành bảng, rồi so với khối **Mẫu output** trong tutorial. `fmt.py` chỉ để xem; evidence vẫn lưu bản gốc.
+
 ---
 
 ## Tổng quan
@@ -23,6 +25,7 @@
 |---|---|
 | `src/make_identities.py` | Sinh key owner / ingestor / analyst vào `private/` + `policies-redacted.json` (không key) |
 | `manifests/store.yaml` | PVC `object-data` 4Gi · Deployment `objects` (1 replica, Recreate) · Service `objects:8333` |
+| `src/fmt.py` | In quota, kết quả S3, UID/digest thành bảng để đối chiếu |
 | `src/clients.sh` | Pod owner, ingestor, analyst (nhãn `access: s3` + Secret) và blocked (không nhãn, không key) |
 
 ---
@@ -34,7 +37,7 @@ cd ~/lab1-bigdata && source env.sh
 echo "$NS"; echo "$STORAGE_IMAGE"; echo "$CLIENT_IMAGE"                  # ①
 ls src/make_identities.py src/clients.sh manifests/store.yaml           # ②
 kubectl config current-context                                          # ③
-kubectl -n "$NS" get resourcequota team-budget                          # ④
+kubectl -n "$NS" get resourcequota team-budget -o json | python3 src/fmt.py quota   # ④
 kubectl -n "$NS" get networkpolicy private-object-store                 # ⑤
 kubectl -n "$NS" get serviceaccount,role,rolebinding observer           # ⑥
 kubectl -n "$NS" get pod,pvc,secret                                     # ⑦
@@ -47,12 +50,26 @@ mkdir -p evidence private && chmod 700 private && ls -ld private        # ⑨
 | ① | `bd-g01` · `chrislusf/seaweedfs@sha256:d7f3…` · `trunglizabeth/s3lab@sha256:b9e7…` | Dòng trống → chưa `source env.sh` |
 | ② | In đủ 3 đường dẫn | `No such file` → WSL chưa có file Task 2, `git pull` / checkout branch |
 | ③ | `k3d-bigdata` | `kubectl config use-context k3d-bigdata` |
-| ④ | `team-budget` với `pods: 0/10`, `requests.cpu: 0/2`, `requests.memory: 0/2Gi`, `requests.storage: 0/8Gi` | `NotFound` → chưa làm Task 1 · Used ≠ 0 → còn Pod/PVC cũ |
+| ④ | Bảng 7 dòng, cột USED toàn `0` — xem mẫu bên dưới | `NotFound` → chưa làm Task 1 · USED ≠ 0 → còn Pod/PVC cũ |
 | ⑤ | `POD-SELECTOR` = `app=objects` | Apply lại `guardrails.yaml` |
 | ⑥ | Đủ 3 dòng: serviceaccount, role, rolebinding `observer` | Apply lại `guardrails.yaml` |
 | ⑦ | `No resources found in bd-g01 namespace.` | Còn `quota-positive` → `kubectl -n "$NS" delete pod quota-positive` |
 | ⑧ | `local-path (default)` | Không có `(default)` → PVC sẽ kẹt `Pending` |
 | ⑨ | `drwx------ … private` | `chmod 700 private` |
+
+Mẫu output ④:
+
+```text
+RESOURCE                USED  HARD
+----------------------  ----  ----
+limits.cpu              0     4
+limits.memory           0     4Gi
+persistentvolumeclaims  0     2
+pods                    0     10
+requests.cpu            0     2
+requests.memory         0     2Gi
+requests.storage        0     8Gi
+```
 
 ---
 
@@ -112,18 +129,43 @@ kubectl -n "$NS" get svc objects                                        # ⑥
 
 ```bash
 sh src/clients.sh                                                       # ①
-kubectl -n "$NS" get pod --show-labels                                  # ②
+kubectl -n "$NS" get pod -L app,role,access                             # ②
 kubectl -n "$NS" get pod,pvc,svc,endpointslice -o wide > evidence/topology.txt
 grep -c Running evidence/topology.txt                                   # ③
-kubectl -n "$NS" describe resourcequota team-budget                     # ④
+kubectl -n "$NS" get resourcequota team-budget -o json | python3 src/fmt.py quota   # ④
 ```
 
 | # | Kỳ vọng | Nếu khác |
 |---|---|---|
 | ① | 4 dòng `pod/<role> created`, rồi 4 dòng `condition met` | Timeout → `describe pod <role>` |
-| ② | 5 Pod `1/1 Running`. owner/ingestor/analyst: `access=s3,role=…` · blocked: chỉ `role=blocked` · storage: `app=objects` | blocked có `access=s3` → sai, xóa và tạo lại |
+| ② | 5 Pod `1/1 Running`, cột APP/ROLE/ACCESS như mẫu bên dưới | blocked có `s3` ở cột ACCESS → sai, xóa và tạo lại |
 | ③ | `5` | Có Pod chưa Running |
-| ④ | Used: `pods 5/10` · `requests.cpu 900m/2` · `limits.cpu 3/4` · `requests.memory 1Gi/2Gi` · `limits.memory 3Gi/4Gi` · `requests.storage 4Gi/8Gi` | Khác → so với `evidence/budget.md`, tìm Pod thừa |
+| ④ | Cột USED như mẫu bên dưới, khớp cột "Tổng" trong `evidence/budget.md` | Khác → tìm Pod thừa: `kubectl -n "$NS" get pod` |
+
+Mẫu output ② (tên Pod storage và AGE sẽ khác):
+
+```text
+NAME                       READY   STATUS    RESTARTS   AGE   APP       ROLE       ACCESS
+analyst                    1/1     Running   0          1m              analyst    s3
+blocked                    1/1     Running   0          1m              blocked
+ingestor                   1/1     Running   0          1m              ingestor   s3
+objects-xxxxxxxxxx-xxxxx   1/1     Running   0          5m    objects
+owner                      1/1     Running   0          1m              owner      s3
+```
+
+Mẫu output ④:
+
+```text
+RESOURCE                USED  HARD
+----------------------  ----  ----
+limits.cpu              3     4
+limits.memory           3Gi   4Gi
+persistentvolumeclaims  1     2
+pods                    5     10
+requests.cpu            900m  2
+requests.memory         1Gi   2Gi
+requests.storage        4Gi   8Gi
+```
 
 ---
 
@@ -131,7 +173,7 @@ kubectl -n "$NS" describe resourcequota team-budget                     # ④
 
 ```bash
 kubectl -n "$NS" exec owner -- python /opt/s3lab.py seed > evidence/seed.jsonl
-grep -c '"ok": true' evidence/seed.jsonl                                # ①
+echo "exit=$?"                                                          # ①
 
 kubectl -n "$NS" exec ingestor -- python /opt/s3lab.py \
   probe get research-raw fixture.txt > evidence/T2-ingestor-read-raw.json
@@ -141,31 +183,40 @@ kubectl -n "$NS" exec analyst -- python /opt/s3lab.py \
   probe get research-release fixture.txt > evidence/T2-analyst-read-release.json
 echo "exit=$?"                                                          # ③
 
-grep -h -o '"sha256": "[0-9a-f]*"' evidence/T2-*-read-*.json            # ④
+python3 src/fmt.py results evidence/seed.jsonl \
+  evidence/T2-ingestor-read-raw.json evidence/T2-analyst-read-release.json   # ④
 ```
 
 | # | Kỳ vọng | Nếu khác |
 |---|---|---|
-| ① | `4` (fixture.txt + delete-probe.txt × 2 bucket, `"http": 200`) | `InvalidAccessKeyId` / timeout → Lỗi thường gặp |
-| ② | `exit=0`; file có `"ok": true`, `"http": 200`, `"principal": "ingestor"`, `"bytes": 25` | `exit=2` → `cat` file xem `"error"` |
-| ③ | `exit=0`; như ② nhưng `"principal": "analyst"` | như trên |
-| ④ | 2 dòng giống hệt: `"sha256": "9ce4c8bb96c85122c3b386653fbe9150cb2f4df03f25c83408fe11c29b87d6f8"` | Hash khác → fixture sai, không được tính pass |
+| ① | `exit=0` | Khác 0 → xem dòng `FAIL` ở ④ |
+| ② | `exit=0` | `exit=2` → xem dòng `FAIL` ở ④ |
+| ③ | `exit=0` | như trên |
+| ④ | Bảng 6 dòng giống mẫu: 4 dòng PUT của owner, 2 dòng GET; tất cả `200` + `OK`; 2 dòng GET có SHA256 = `khớp` | `FAIL` + `InvalidAccessKeyId` / `EndpointConnectionError` → Lỗi thường gặp · SHA256 không phải `khớp` → fixture sai, không được tính pass |
+
+Mẫu output ④:
+
+```text
+PRINCIPAL  OP   BUCKET            KEY               HTTP  KẾT QUẢ  BYTES  SHA256
+---------  ---  ----------------  ----------------  ----  -------  -----  ------
+owner      PUT  research-raw      fixture.txt       200   OK       25     -
+owner      PUT  research-raw      delete-probe.txt  200   OK       25     -
+owner      PUT  research-release  fixture.txt       200   OK       25     -
+owner      PUT  research-release  delete-probe.txt  200   OK       25     -
+ingestor   GET  research-raw      fixture.txt       200   OK       25     khớp
+analyst    GET  research-release  fixture.txt       200   OK       25     khớp
+```
+
+`khớp` nghĩa là SHA-256 trả về bằng `9ce4c8bb96c85122c3b386653fbe9150cb2f4df03f25c83408fe11c29b87d6f8` (hằng số trong README).
 
 ---
 
 ## Bước 5 — Evidence nguồn gốc
 
 ```bash
-{
-  echo "# storage pod";  kubectl -n "$NS" get pod -l app=objects \
-    -o jsonpath='{.items[0].metadata.name} uid={.items[0].metadata.uid} node={.items[0].spec.nodeName} imageID={.items[0].status.containerStatuses[0].imageID}{"\n"}'
-  echo "# pvc";          kubectl -n "$NS" get pvc object-data \
-    -o jsonpath='uid={.metadata.uid} volume={.spec.volumeName} sc={.spec.storageClassName} phase={.status.phase}{"\n"}'
-  echo "# client pods";  kubectl -n "$NS" get pod owner ingestor analyst blocked \
-    -o jsonpath='{range .items[*]}{.metadata.name} uid={.metadata.uid} imageID={.status.containerStatuses[0].imageID}{"\n"}{end}'
-  echo "# storageclass"; kubectl get storageclass
-} > evidence/T2-provenance.txt
-cat evidence/T2-provenance.txt                                          # ①
+kubectl -n "$NS" get pod,pvc -o json > evidence/T2-provenance.json
+kubectl get storageclass > evidence/T2-storageclass.txt
+python3 src/fmt.py uids < evidence/T2-provenance.json                   # ①
 
 kubectl -n "$NS" exec deploy/objects -- ls -la /data > evidence/T2-data-mount.txt
 cat evidence/T2-data-mount.txt                                          # ②
@@ -176,9 +227,24 @@ grep -l -E 'secretKey|AWS_SECRET' manifests/*.yaml policies-redacted.json eviden
 
 | # | Kỳ vọng | Nếu khác |
 |---|---|---|
-| ① | Không ô trống sau `uid=` / `imageID=`. Storage: `imageID=docker.io/chrislusf/seaweedfs@sha256:…` · 4 client: `…/s3lab@sha256:b9e7…` · PVC: `sc=local-path phase=Bound volume=pvc-…` | Ô trống → Pod chưa Running, chạy lại |
+| ① | Bảng 6 dòng như mẫu: 5 Pod `Running` cùng node, 1 PVC `Bound`. Không ô nào là `-`. Digest storage bắt đầu `d7f3fdf6fb9c`, client `b9e7cf4d42d7` (khớp `env.sh`) | Ô `-` → Pod chưa Running · digest khác `env.sh` → sai image |
 | ② | `/data` không rỗng (file/thư mục do SeaweedFS tạo), chủ sở hữu `1000` | Rỗng → server không ghi vào PVC |
 | ③ | `sạch` | In ra tên file → file đó chứa secret, không được nộp |
+
+Mẫu output ① (UID, tên Pod storage và volume sẽ khác):
+
+```text
+KIND  NAME                      UID                                   PHASE    NODE / SC             IMAGE / VOLUME
+----  ------------------------  ------------------------------------  -------  --------------------  ------------------------------------------
+Pod   analyst                   1a2b3c4d-…                            Running  k3d-bigdata-server-0  s3lab@b9e7cf4d42d7…
+Pod   blocked                   …                                     Running  k3d-bigdata-server-0  s3lab@b9e7cf4d42d7…
+Pod   ingestor                  …                                     Running  k3d-bigdata-server-0  s3lab@b9e7cf4d42d7…
+Pod   objects-xxxxxxxxxx-xxxxx  …                                     Running  k3d-bigdata-server-0  seaweedfs@d7f3fdf6fb9c…
+Pod   owner                     …                                     Running  k3d-bigdata-server-0  s3lab@b9e7cf4d42d7…
+PVC   object-data               …                                     Bound    local-path            pvc-…
+```
+
+Ghi lại UID của Pod `objects-…` và PVC `object-data`: Task 5 sẽ so với hai giá trị này (Pod UID đổi, PVC UID giữ nguyên).
 
 ---
 
@@ -187,15 +253,15 @@ grep -l -E 'secretKey|AWS_SECRET' manifests/*.yaml policies-redacted.json eviden
 | Hạng mục | Kiểm tra | Evidence |
 |---|---|---|
 | Triển khai private (4đ) | 1 replica Ready; ClusterIP 8333; server dùng `s3-config` | `topology.txt`, `store-applied.yaml` |
-| PVC bind/mount (3đ) | PVC Bound, mount tại `/data` | `T2-provenance.txt`, `T2-data-mount.txt` |
+| PVC bind/mount (3đ) | PVC Bound, mount tại `/data` | `T2-provenance.json`, `T2-data-mount.txt` |
 | Fixture + đọc verify (3đ) | 2 bucket, 4 fixture; ingestor đọc raw, analyst đọc release, hash khớp | `seed.jsonl`, `T2-*-read-*.json` |
-| Nguồn gốc (2đ) | imageID digest, UID Pod/PVC, StorageClass, manifest không secret | `T2-provenance.txt`, `policies-redacted.json` |
+| Nguồn gốc (2đ) | imageID digest, UID Pod/PVC, StorageClass, manifest không secret | `T2-provenance.json`, `T2-storageclass.txt`, `policies-redacted.json` |
 
 **Để giải thích khi được hỏi:** lab dùng HTTP nội bộ vì dữ liệu là tổng hợp · Secret chỉ là base64, không phải mã hóa · một port TCP đang mở không chứng minh S3 có xác thực, phải có lần đọc đúng identity.
 
 ## Kiểm chéo (E kiểm tra B)
 
-E tự chạy: `get pvc object-data` → so UID với `T2-provenance.txt`; chạy lệnh đọc của analyst ở Bước 4 → so sha256.
+E tự chạy: `get pvc object-data` → so UID với `python3 src/fmt.py uids < evidence/T2-provenance.json`; chạy lệnh đọc của analyst ở Bước 4 → so sha256.
 
 ## Lỗi thường gặp
 
@@ -212,4 +278,4 @@ Lỗi thì **giữ file cũ** (đổi tên `…-attempt1`), sửa rồi chạy l
 
 ## Không commit
 
-`private/`, `*.env`, `s3.json`. Chỉ commit `src/make_identities.py`, `src/clients.sh`, `manifests/store.yaml`, `Task2Tutorial.md`. `evidence/`, `store-applied.yaml`, `policies-redacted.json` chỉ commit từ buổi chạy chính thức.
+`private/`, `*.env`, `s3.json`. Chỉ commit `src/make_identities.py`, `src/clients.sh`, `src/fmt.py`, `manifests/store.yaml`, `Task2Tutorial.md`. `evidence/`, `store-applied.yaml`, `policies-redacted.json` chỉ commit từ buổi chạy chính thức.
