@@ -20,12 +20,14 @@
 | 3 | Client | 4 Pod client, quota dùng đúng budget |
 | 4 | Seed & đọc | 2 bucket, 4 fixture, 2 lần đọc khớp SHA-256 |
 | 5 | Evidence | UID, imageID, `/data`, không lộ secret |
+| R | Reset (luyện tập) | Về lại trạng thái sau Task 1, chạy lại từ Bước 0 |
 
 | File | Nội dung |
 |---|---|
 | `src/make_identities.py` | Sinh key owner / ingestor / analyst vào `private/` + `policies-redacted.json` (không key) |
 | `manifests/store.yaml` | PVC `object-data` 4Gi · Deployment `objects` (1 replica, Recreate) · Service `objects:8333` |
 | `src/fmt.py` | In quota, kết quả S3, UID/digest thành bảng để đối chiếu |
+| `src/reset_task2.sh` | Xóa tài nguyên Task 2, đưa namespace về trạng thái ngay sau Task 1 |
 | `src/clients.sh` | Pod owner, ingestor, analyst (nhãn `access: s3` + Secret) và blocked (không nhãn, không key) |
 
 ---
@@ -248,6 +250,36 @@ Ghi lại UID của Pod `objects-…` và PVC `object-data`: Task 5 sẽ so vớ
 
 ---
 
+## Reset — quay về trạng thái trước Task 2
+
+> ⚠️ **Chỉ dùng trên cluster luyện tập.** Không chạy trong buổi chạy chính thức: xóa PVC = mất dữ liệu, đề cấm xóa PVC.
+> Task 1 (quota, NetworkPolicy, observer) được **giữ nguyên**. File evidence cũ không bị xóa mà được cất vào `evidence/_reset-<thời gian>/`.
+
+```bash
+cd ~/lab1-bigdata && source env.sh
+sh src/reset_task2.sh                                                   # ①  (giữ key cũ)
+# hoặc: sh src/reset_task2.sh --new-keys                                #     (cất key cũ, lần sau tạo key mới)
+kubectl -n "$NS" get resourcequota team-budget -o json | python3 src/fmt.py quota   # ②
+kubectl -n "$NS" get networkpolicy,serviceaccount,role,rolebinding      # ③
+kubectl get pv | grep "$NS/object-data" || echo "PV đã xóa"            # ④
+ls private/                                                             # ⑤
+```
+
+| # | Kỳ vọng | Nếu khác |
+|---|---|---|
+| ① | Hỏi `Gõ "reset"…` → gõ `reset`. Sau đó lần lượt `pod "owner" deleted`… `deployment.apps "objects" deleted`, `service "objects" deleted`, `persistentvolumeclaim "object-data" deleted`, 4 dòng `secret "…" deleted`, các dòng `moved …`, cuối cùng `No resources found in bd-g01 namespace.` | Gõ sai → `Hủy.`, không có gì bị xóa · kẹt ở PVC → đợi, hoặc kiểm tra còn Pod nào mount `object-data` |
+| ② | Giống mẫu ở Bước 0: cột USED toàn `0` | USED ≠ 0 → còn Pod/PVC khác: `kubectl -n "$NS" get pod,pvc` |
+| ③ | Còn `private-object-store`, `observer` (serviceaccount, role, rolebinding) — Task 1 không bị đụng | Thiếu → apply lại `guardrails.yaml` |
+| ④ | `PV đã xóa` (local-path tự xóa PV khi xóa PVC) | Còn PV `Released` → `kubectl delete pv <tên>` |
+| ⑤ | Không `--new-keys`: còn `s3.json`, `owner.env`, `ingestor.env`, `analyst.env` · Có `--new-keys`: chỉ còn thư mục `old-…` | — |
+
+**Chạy lại Task 2 sau reset:**
+
+- Giữ key (mặc định): ở Bước 1 bỏ qua ① `make_identities.py` (nó sẽ báo `đã tồn tại`), chạy tiếp từ ② để tạo lại 4 Secret.
+- `--new-keys`: chạy Bước 1 từ đầu như bình thường.
+
+---
+
 ## Tiêu chí nghiệm thu (12 điểm)
 
 | Hạng mục | Kiểm tra | Evidence |
@@ -278,4 +310,4 @@ Lỗi thì **giữ file cũ** (đổi tên `…-attempt1`), sửa rồi chạy l
 
 ## Không commit
 
-`private/`, `*.env`, `s3.json`. Chỉ commit `src/make_identities.py`, `src/clients.sh`, `src/fmt.py`, `manifests/store.yaml`, `Task2Tutorial.md`. `evidence/`, `store-applied.yaml`, `policies-redacted.json` chỉ commit từ buổi chạy chính thức.
+`private/`, `*.env`, `s3.json`. Chỉ commit `src/make_identities.py`, `src/clients.sh`, `src/fmt.py`, `src/reset_task2.sh`, `manifests/store.yaml`, `Task2Tutorial.md`. `evidence/`, `store-applied.yaml`, `policies-redacted.json` chỉ commit từ buổi chạy chính thức.
