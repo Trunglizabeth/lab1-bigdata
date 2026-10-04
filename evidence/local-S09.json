@@ -1,0 +1,1 @@
+{"bucket": "research-release", "bytes": 0, "error": "AccessDenied", "http": 403, "key": "delete-probe.txt", "ms": 9.609548000298673, "ok": false, "op": "delete", "principal": "analyst", "request_id": "1791049173369699210", "utc": "2026-10-03T17:39:33.372066+00:00"}

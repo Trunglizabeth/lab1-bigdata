@@ -1,0 +1,288 @@
+I1003 17:17:19.736345 mini.go:527 Final port configuration - Master: 9333, Filer: 8888, Volume: 9340, S3: 8333, Iceberg: 8181, WebDAV: 7333, Admin: 23646
+I1003 17:17:19.737537 mini.go:532 gRPC port configuration - Master: 19333, Filer: 18888, Volume: 19340, S3: 18333, Admin: 33646
+I1003 17:17:19.737574 master.go:332 current: 10.42.0.17:9333 peers:none
+I1003 17:17:19.737581 master.go:337 Running in single-master mode (peers=none), no quorum required
+I1003 17:17:19.737649 file_util.go:28 Folder /data Permission: -rwxrwxrwx
+I1003 17:17:19.737678 mini.go:339 Optimal volume size: 1024MB (total disk capacity: 1031018MB, capacity/100 before rounding: 10310MB, rounded to nearest power of 2, clamped to [64,1024]MB)
+I1003 17:17:19.737690 mini.go:818 Mini started with auto-calculated optimal volume size limit: 1024MB
+I1003 17:17:19.737804 mini.go:908 Master service starting...
+I1003 17:17:19.737907 master.go:332 current: 10.42.0.17:9333 peers:none
+I1003 17:17:19.737916 master.go:337 Running in single-master mode (peers=none), no quorum required
+I1003 17:17:19.738034 master_server.go:146 Volume Size Limit is 1024 MB
+I1003 17:17:19.738292 master.go:192 Start Seaweed Master 30GB 4.12 2d9768539 at 10.42.0.17:9333
+I1003 17:17:19.739075 raft_server.go:133 Starting RaftServer with 10.42.0.17:9333
+I1003 17:17:19.748872 raft_server.go:182 current cluster leader: 
+I1003 17:17:19.748980 master.go:227 Single-master mode: initializing cluster immediately
+I1003 17:17:19.749038 raft_server.go:204 Initializing new cluster
+I1003 17:17:19.754382 master_server.go:228 [10.42.0.17:9333.19333] I am the leader!
+I1003 17:17:19.756322 master.go:251 Start Seaweed Master 30GB 4.12 2d9768539 grpc server at 10.42.0.17:19333
+I1003 17:17:19.756469 masterclient.go:385 .master masterClient bootstraps with masters {[10.42.0.17:9333.19333] <nil>}
+I1003 17:17:19.757677 masterclient.go:179 .master masterClient gRPC stream established to 10.42.0.17:9333 in 1.16898ms
+I1003 17:17:19.758171 master_grpc_server.go:404 + client .master@10.42.0.17:9333.19333
+I1003 17:17:19.758940 masterclient.go:269 updateVidMap ignore short heartbeat: volume_location:{leader:"10.42.0.17:9333.19333"}
+I1003 17:17:19.759027 masterclient.go:244 + master@10.42.0.17:9333 noticed .master 10.42.0.17:9333.19333
+I1003 17:17:19.940231 mini.go:926 Master service is ready at http://10.42.0.17:9333
+I1003 17:17:19.940323 mini.go:908 Volume service starting...
+I1003 17:17:19.940388 file_util.go:28 Folder /data Permission: -rwxrwxrwx
+I1003 17:17:19.948973 volume.go:412 Start Seaweed volume server 30GB 4.12 2d9768539 at 10.42.0.17:9340
+I1003 17:17:19.949021 volume_grpc_client_to_master.go:53 Volume server start with seed master nodes: [10.42.0.17:9333]
+I1003 17:17:19.950215 volume_grpc_client_to_master.go:130 Heartbeat to: 10.42.0.17:9333
+I1003 17:17:19.953175 node.go:427 topo adds child DefaultDataCenter
+I1003 17:17:19.953210 node.go:427 topo:DefaultDataCenter adds child DefaultRack
+I1003 17:17:19.953217 node.go:427 topo:DefaultDataCenter:DefaultRack adds child 10.42.0.17:9340
+I1003 17:17:19.953222 node.go:427 topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340 adds child 
+I1003 17:17:19.953227 master_grpc_server.go:141 added volume server 0: 10.42.0.17:9340 (id=10.42.0.17:9340, ip=10.42.0.17:9340) [867ef7cb-2920-4ca3-82eb-d62ab3b0410f]
+I1003 17:17:19.953242 master_grpc_server.go:51 found new uuid:10.42.0.17:9340 [867ef7cb-2920-4ca3-82eb-d62ab3b0410f] , map[10.42.0.17:9340:[867ef7cb-2920-4ca3-82eb-d62ab3b0410f]]
+I1003 17:17:20.141885 mini.go:926 Volume service is ready at http://10.42.0.17:9340
+I1003 17:17:20.142097 mini.go:908 Filer service starting...
+I1003 17:17:20.142467 filer.go:341 Initialized credential manager: filer_etc
+W1003 17:17:20.143007 filer_server.go:174 skipping default store dir in /data/filerldb2
+I1003 17:17:20.144369 filer_server.go:180 max_file_name_length 255
+I1003 17:17:20.147722 leveldb2_store.go:43 filer store leveldb2 dir: /data/filerldb2
+I1003 17:17:20.147762 masterclient.go:385 .filer masterClient bootstraps with masters {[10.42.0.17:9333.19333] <nil>}
+I1003 17:17:20.148236 file_util.go:28 Folder /data/filerldb2 Permission: -rwxr-xr-x
+I1003 17:17:20.148715 masterclient.go:179 .filer masterClient gRPC stream established to 10.42.0.17:9333 in 918.446µs
+I1003 17:17:20.149028 master_grpc_server.go:404 + client .filer@10.42.0.17:8888.18888
+I1003 17:17:20.149335 masterclient.go:244 + master@10.42.0.17:9333 noticed .filer 10.42.0.17:8888.18888
+I1003 17:17:20.268690 filer.go:166 create filer.store.id to 1142392603
+I1003 17:17:20.268722 configuration.go:29 configured filer store to leveldb2
+I1003 17:17:20.268806 filer_server_tus_session.go:400 TUS session cleanup started with interval 1h0m0s
+I1003 17:17:20.269464 master_client.go:23 the cluster has 1 filer
+I1003 17:17:20.269498 filer_server.go:241 10.42.0.17:8888 bootstrap from peers [node_type:"filer" address:"10.42.0.17:8888.18888" is_add:true created_at_ns:1791047840149071882]
+I1003 17:17:20.269530 filer.go:121 10.42.0.17:8888 aggregate from peers [10.42.0.17:8888]
+I1003 17:17:20.269972 filer.go:393 Start Seaweed Filer 30GB 4.12 2d9768539 at 10.42.0.17:8888
+I1003 17:17:20.270070 meta_aggregator.go:80 loopSubscribeToOneFiler read 10.42.0.17:8888 start from 2026-10-03 17:16:20.269489791 +0000 UTC 1791047780269489791
+I1003 17:17:20.273541 filer.go:415 Registered IAM gRPC service on filer
+I1003 17:17:20.275139 meta_aggregator.go:185 subscribing remote 10.42.0.17:8888 meta change: 2026-10-03 17:16:20.269489791 +0000 UTC, clientId:836413856
+I1003 17:17:20.311641 filer_grpc_server_sub_meta.go:411 + local listener filer:10.42.0.17:8888.18888@10.42.0.17:32918 clientId -836413856 clientEpoch 1
+I1003 17:17:20.311668 filer_grpc_server_sub_meta.go:163  + filer:10.42.0.17:8888.18888@10.42.0.17:32918 local subscribe / from {Time:2026-10-03 17:16:20.269489791 +0000 UTC Offset:-2 IsOffsetBased:false} clientId:-836413856
+I1003 17:17:20.349070 mini.go:926 Filer service is ready at http://10.42.0.17:8888
+I1003 17:17:20.349166 mini.go:908 WebDAV service starting...
+I1003 17:17:20.349172 mini.go:908 S3 service starting...
+I1003 17:17:20.349802 s3.go:250 S3 read filer buckets dir: /buckets
+I1003 17:17:20.349846 s3.go:252 S3 read master addresses for discovery: [10.42.0.17:9333]
+I1003 17:17:20.349861 s3.go:260 connected to filers [10.42.0.17:8888]
+I1003 17:17:20.349873 s3.go:281 Starting S3 API Server with standard IAM
+I1003 17:17:20.349906 webdav.go:109 connected to filer 10.42.0.17:8888.18888 grpc address 10.42.0.17:18888
+I1003 17:17:20.350331 auth_credentials.go:591 Loaded 3 identities, 2 accounts, 3 access keys. Auth enabled: true
+I1003 17:17:20.351867 filer_client.go:176 FilerClient: started filer discovery for group '' (refresh interval: 5m0s)
+I1003 17:17:20.351905 masterclient.go:385 .s3 masterClient bootstraps with masters {[10.42.0.17:9333.19333] <nil>}
+I1003 17:17:20.352939 masterclient.go:179 .s3 masterClient gRPC stream established to 10.42.0.17:9333 in 884.919µs
+I1003 17:17:20.353153 master_grpc_server.go:404 + client .s3@10.42.0.17:18333
+I1003 17:17:20.353362 masterclient.go:244 + master@10.42.0.17:9333 noticed .s3 10.42.0.17:18333
+I1003 17:17:20.353460 masterclient.go:244 + filer@10.42.0.17:8888 noticed .s3 10.42.0.17:18333
+I1003 17:17:20.358024 s3_sse_s3.go:374 SSE-S3 KeyManager: Generated and saved new KEK to filer /etc/s3/sse_kek
+I1003 17:17:20.358832 s3.go:451 Start Seaweed S3 API Server 30GB 4.12 2d9768539 at http port 8333
+I1003 17:17:20.359044 filer_grpc_server_sub_meta.go:411 +  listener s3@10.42.0.17:32920 clientId 1552207710 clientEpoch 2
+I1003 17:17:20.359072 s3.go:491 Start Iceberg REST Catalog Server at http://10.42.0.17:8181
+I1003 17:17:20.359083 filer_grpc_server_sub_meta.go:45  s3@10.42.0.17:32920 starts to subscribe /etc/ from {Time:2026-10-03 17:17:20.349892839 +0000 UTC Offset:-2 IsOffsetBased:false}
+I1003 17:17:20.376285 master_client.go:23 the cluster has 1 filer
+I1003 17:17:20.376666 needle_map_leveldb.go:122 generateLevelDbFile /tmp/ce1aee87/c0_2_0.ldb, watermark 0, num of entries:0
+I1003 17:17:20.388627 needle_map_leveldb.go:66 Loading /tmp/ce1aee87/c0_2_0.ldb... , watermark: 0
+I1003 17:17:20.399215 needle_map_leveldb.go:122 generateLevelDbFile /tmp/ce1aee87/c0_2_1.ldb, watermark 0, num of entries:0
+I1003 17:17:20.412900 needle_map_leveldb.go:66 Loading /tmp/ce1aee87/c0_2_1.ldb... , watermark: 0
+I1003 17:17:20.425660 needle_map_leveldb.go:122 generateLevelDbFile /tmp/ce1aee87/c1_3_0.ldb, watermark 0, num of entries:0
+I1003 17:17:20.441136 needle_map_leveldb.go:66 Loading /tmp/ce1aee87/c1_3_0.ldb... , watermark: 0
+I1003 17:17:20.459938 needle_map_leveldb.go:122 generateLevelDbFile /tmp/ce1aee87/c1_3_1.ldb, watermark 0, num of entries:0
+I1003 17:17:20.475622 needle_map_leveldb.go:66 Loading /tmp/ce1aee87/c1_3_1.ldb... , watermark: 0
+I1003 17:17:20.488442 needle_map_leveldb.go:122 generateLevelDbFile /tmp/ce1aee87/c1_3_2.ldb, watermark 0, num of entries:0
+I1003 17:17:20.503341 needle_map_leveldb.go:66 Loading /tmp/ce1aee87/c1_3_2.ldb... , watermark: 0
+I1003 17:17:20.515913 needle_map_leveldb.go:122 generateLevelDbFile /tmp/ce1aee87/c2_2_0.ldb, watermark 0, num of entries:0
+I1003 17:17:20.531564 needle_map_leveldb.go:66 Loading /tmp/ce1aee87/c2_2_0.ldb... , watermark: 0
+I1003 17:17:20.545525 needle_map_leveldb.go:122 generateLevelDbFile /tmp/ce1aee87/c2_2_1.ldb, watermark 0, num of entries:0
+I1003 17:17:20.550937 mini.go:926 S3 service is ready at http://10.42.0.17:8333
+I1003 17:17:20.551556 mini.go:926 Iceberg service is ready at http://10.42.0.17:8181
+I1003 17:17:20.562607 needle_map_leveldb.go:66 Loading /tmp/ce1aee87/c2_2_1.ldb... , watermark: 0
+I1003 17:17:20.563091 webdav.go:153 Start Seaweed WebDav Server 30GB 4.12 2d9768539 at http 10.42.0.17:7333
+I1003 17:17:20.753796 mini.go:926 WebDAV service is ready at http://10.42.0.17:7333
+Data directory created/verified: /data/admin
+2026/10/03 17:17:20 Generated and persisted new session key to /data/admin/.session_key
+I1003 17:17:20.754910 config_loader.go:109 Using explicit credential store: grpc
+I1003 17:17:20.754922 admin_server.go:163 Credential manager initialized with store type: grpc
+I1003 17:17:20.754928 admin_server.go:176 Credential store configured with dynamic filer address function
+I1003 17:17:20.754983 maintenance_queue.go:45 Loading tasks from persistence...
+I1003 17:17:20.754984 masterclient.go:385 .admin masterClient bootstraps with masters {[10.42.0.17:9333.19333] <nil>}
+I1003 17:17:20.755002 maintenance_queue.go:52 DEBUG LoadTasksFromPersistence: Found 0 tasks in persistence
+I1003 17:17:20.755009 maintenance_queue.go:108 Loaded 0 tasks from persistence (0 pending)
+I1003 17:17:20.755909 masterclient.go:179 .admin masterClient gRPC stream established to 10.42.0.17:9333 in 890.66µs
+I1003 17:17:20.756118 master_grpc_server.go:404 + client .admin@be0b9a67-6735-4b5c-a0d0-e48917178b6e
+Discovered filers: 10.42.0.17:8888.18888
+2026/10/03 17:17:20 Starting SeaweedFS Admin Server on port 23646
+I1003 17:17:21.255841 mini.go:1040 Admin server is ready at http://10.42.0.17:23646
+I1003 17:17:21.255866 mini.go:1080 Starting maintenance worker for admin server
+I1003 17:17:21.256163 mini.go:1091 Worker connecting to admin server: 10.42.0.17:23646
+I1003 17:17:21.256187 mini.go:1092 Worker capabilities: vacuum,ec,balance
+I1003 17:17:21.256190 mini.go:1093 Worker directory: /data/worker
+I1003 17:17:21.256654 worker.go:147 Generated new worker ID: w-object-ef7d
+I1003 17:17:21.256747 worker.go:154 Saved worker ID to /data/worker/worker.id
+I1003 17:17:21.256913 worker.go:431 Worker w-object-ef7d handleStart called
+I1003 17:17:21.256930 worker.go:462 WORKER STARTING: Worker w-object-ef7d starting with capabilities [vacuum erasure_coding balance], max concurrent: 2
+I1003 17:17:21.257124 client.go:264 [session a953] Connected to admin server at 10.42.0.17:33646
+I1003 17:17:21.257751 client.go:282 [session a953] Worker stream created
+I1003 17:17:21.258145 worker_grpc_server.go:173 Worker w-object-ef7d connecting from 10.42.0.17:36856
+I1003 17:17:21.258173 maintenance_queue.go:525 Worker registered: w-object-ef7d at 10.42.0.17:36856 (capabilities: [vacuum erasure_coding balance], max concurrent: 2)
+I1003 17:17:21.258426 client.go:695 Worker registered successfully: Worker registered successfully
+I1003 17:17:21.258444 client.go:310 [session a953] Worker w-object-ef7d registered successfully with admin server
+I1003 17:17:21.258461 worker.go:470 INITIAL CONNECTION SUCCESS: Worker w-object-ef7d successfully connected to admin server
+I1003 17:17:21.258466 worker.go:481 WORKER STARTED: Worker w-object-ef7d started successfully (connection attempts will continue in background)
+I1003 17:17:21.258473 mini.go:1155 Maintenance worker w-object-ef7d started successfully
+I1003 17:17:21.258546 worker.go:910 MESSAGE LOOP STARTED: Worker w-object-ef7d message processing loop started
+╔═══════════════════════════════════════════════════════════════════════════════╗
+║                      SeaweedFS Mini - All-in-One Mode                         ║
+╚═══════════════════════════════════════════════════════════════════════════════╝
+
+  All enabled components are running and ready to use:
+
+    Master UI:       http://10.42.0.17:9333
+    Filer UI:        http://10.42.0.17:8888
+    S3 Endpoint:     http://10.42.0.17:8333
+    Iceberg Catalog: http://10.42.0.17:8181
+    WebDAV:          http://10.42.0.17:7333
+    Admin UI:        http://10.42.0.17:23646
+    Volume Server:   http://10.42.0.17:9340
+
+  Optimized Settings:
+    • Volume size limit: 1024MB
+    • Volume max: auto (based on free disk space)
+    • Pre-stop seconds: 1 (faster shutdown)
+    • Master peers: none (single master mode)
+    • Admin UI for management and maintenance tasks
+
+  Data Directory: /data
+
+  Press Ctrl+C to stop all components
+  To create S3 credentials, you have two options:
+
+  Option 1: Use environment variables (recommended for quick setup)
+    export AWS_ACCESS_KEY_ID=your-access-key
+    export AWS_SECRET_ACCESS_KEY=your-secret-key
+    weed mini -dir=/data
+    This will create initial credentials for the 'mini' user.
+
+  Option 2: Use the Admin UI
+    Open: http://10.42.0.17:23646
+    Add a new identity to create S3 credentials.
+
+I1003 17:17:21.258787 mini.go:712 Mini configuration saved to /data/mini.options
+I1003 17:17:22.756025 maintenance_manager.go:142 Maintenance manager started with scan interval 1800s
+I1003 17:17:51.257432 worker.go:864 CONNECTION RESTORED: Worker w-object-ef7d connection status changed: connected
+I1003 17:18:00.358926 lock_client.go:107 Lock owner changed from  to 10.42.0.17:8888.18888-s3-metrics
+I1003 17:18:20.144751 master_grpc_server_volume.go:151 volume grow &{Option:{"replication":{},"ttl":{"Count":0,"Unit":0},"version":3} Count:0 Force:false Reason:grpc assign}
+I1003 17:18:20.146576 store.go:264 In dir /data (disk ID 0) adds volume:1 collection: replicaPlacement:000 ttl:
+I1003 17:18:20.151215 store.go:269 add volume 1 on disk ID 0
+I1003 17:18:20.151347 volume_grpc_client_to_master.go:238 volume server 10.42.0.17:9340 adds volume 1
+I1003 17:18:20.151729 volume_growth.go:375 Created Volume 1 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:18:20.151778 volume_growth.go:388 Registered Volume 1 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:18:20.152076 store.go:264 In dir /data (disk ID 0) adds volume:2 collection: replicaPlacement:000 ttl:
+I1003 17:18:20.156028 store.go:269 add volume 2 on disk ID 0
+I1003 17:18:20.156133 volume_grpc_client_to_master.go:238 volume server 10.42.0.17:9340 adds volume 2
+I1003 17:18:20.156362 volume_growth.go:375 Created Volume 2 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:18:20.156393 volume_growth.go:388 Registered Volume 2 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:18:20.156838 store.go:264 In dir /data (disk ID 0) adds volume:3 collection: replicaPlacement:000 ttl:
+I1003 17:18:20.161524 store.go:269 add volume 3 on disk ID 0
+I1003 17:18:20.161680 volume_grpc_client_to_master.go:238 volume server 10.42.0.17:9340 adds volume 3
+I1003 17:18:20.161910 volume_growth.go:375 Created Volume 3 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:18:20.161941 volume_growth.go:388 Registered Volume 3 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:18:20.162631 store.go:264 In dir /data (disk ID 0) adds volume:4 collection: replicaPlacement:000 ttl:
+I1003 17:18:20.166992 store.go:269 add volume 4 on disk ID 0
+I1003 17:18:20.167065 volume_grpc_client_to_master.go:238 volume server 10.42.0.17:9340 adds volume 4
+I1003 17:18:20.167342 volume_growth.go:375 Created Volume 4 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:18:20.167472 volume_growth.go:388 Registered Volume 4 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:18:20.167959 store.go:264 In dir /data (disk ID 0) adds volume:5 collection: replicaPlacement:000 ttl:
+I1003 17:18:20.172162 store.go:269 add volume 5 on disk ID 0
+I1003 17:18:20.172237 volume_grpc_client_to_master.go:238 volume server 10.42.0.17:9340 adds volume 5
+I1003 17:18:20.172532 volume_growth.go:375 Created Volume 5 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:18:20.172632 volume_growth.go:388 Registered Volume 5 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:18:20.173042 store.go:264 In dir /data (disk ID 0) adds volume:6 collection: replicaPlacement:000 ttl:
+I1003 17:18:20.177329 store.go:269 add volume 6 on disk ID 0
+I1003 17:18:20.177437 volume_grpc_client_to_master.go:238 volume server 10.42.0.17:9340 adds volume 6
+I1003 17:18:20.177897 volume_growth.go:375 Created Volume 6 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:18:20.177958 volume_growth.go:388 Registered Volume 6 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:18:20.178284 store.go:264 In dir /data (disk ID 0) adds volume:7 collection: replicaPlacement:000 ttl:
+I1003 17:18:20.182809 store.go:269 add volume 7 on disk ID 0
+I1003 17:18:20.182920 volume_grpc_client_to_master.go:238 volume server 10.42.0.17:9340 adds volume 7
+I1003 17:18:20.183261 volume_growth.go:375 Created Volume 7 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:18:20.183304 volume_growth.go:388 Registered Volume 7 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:19:12.923942 master_grpc_server_volume.go:151 volume grow &{Option:{"collection":"research-raw","replication":{},"ttl":{"Count":0,"Unit":0},"version":3} Count:0 Force:false Reason:grpc assign}
+I1003 17:19:12.924458 store.go:264 In dir /data (disk ID 0) adds volume:8 collection:research-raw replicaPlacement:000 ttl:
+I1003 17:19:12.930084 store.go:269 add volume 8 on disk ID 0
+I1003 17:19:12.930209 volume_grpc_client_to_master.go:238 volume server 10.42.0.17:9340 adds volume 8
+I1003 17:19:12.930513 volume_growth.go:375 Created Volume 8 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:19:12.930590 volume_growth.go:388 Registered Volume 8 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:19:12.930850 store.go:264 In dir /data (disk ID 0) adds volume:9 collection:research-raw replicaPlacement:000 ttl:
+I1003 17:19:12.935318 store.go:269 add volume 9 on disk ID 0
+I1003 17:19:12.935429 volume_grpc_client_to_master.go:238 volume server 10.42.0.17:9340 adds volume 9
+I1003 17:19:12.935702 volume_growth.go:375 Created Volume 9 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:19:12.935742 volume_growth.go:388 Registered Volume 9 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:19:12.936348 store.go:264 In dir /data (disk ID 0) adds volume:10 collection:research-raw replicaPlacement:000 ttl:
+I1003 17:19:12.940613 store.go:269 add volume 10 on disk ID 0
+I1003 17:19:12.940705 volume_grpc_client_to_master.go:238 volume server 10.42.0.17:9340 adds volume 10
+I1003 17:19:12.940909 volume_growth.go:375 Created Volume 10 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:19:12.940963 volume_growth.go:388 Registered Volume 10 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:19:12.941260 store.go:264 In dir /data (disk ID 0) adds volume:11 collection:research-raw replicaPlacement:000 ttl:
+I1003 17:19:12.944780 store.go:269 add volume 11 on disk ID 0
+I1003 17:19:12.945078 volume_grpc_client_to_master.go:238 volume server 10.42.0.17:9340 adds volume 11
+I1003 17:19:12.945099 volume_growth.go:375 Created Volume 11 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:19:12.945152 volume_growth.go:388 Registered Volume 11 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:19:12.945529 store.go:264 In dir /data (disk ID 0) adds volume:12 collection:research-raw replicaPlacement:000 ttl:
+I1003 17:19:12.949564 store.go:269 add volume 12 on disk ID 0
+I1003 17:19:12.949688 volume_grpc_client_to_master.go:238 volume server 10.42.0.17:9340 adds volume 12
+I1003 17:19:12.950046 volume_growth.go:375 Created Volume 12 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:19:12.950096 volume_growth.go:388 Registered Volume 12 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:19:12.950383 store.go:264 In dir /data (disk ID 0) adds volume:13 collection:research-raw replicaPlacement:000 ttl:
+I1003 17:19:12.954191 store.go:269 add volume 13 on disk ID 0
+I1003 17:19:12.954319 volume_grpc_client_to_master.go:238 volume server 10.42.0.17:9340 adds volume 13
+I1003 17:19:12.954701 volume_growth.go:375 Created Volume 13 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:19:12.954753 volume_growth.go:388 Registered Volume 13 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:19:12.955262 store.go:264 In dir /data (disk ID 0) adds volume:14 collection:research-raw replicaPlacement:000 ttl:
+I1003 17:19:12.959881 store.go:269 add volume 14 on disk ID 0
+I1003 17:19:12.960007 volume_grpc_client_to_master.go:238 volume server 10.42.0.17:9340 adds volume 14
+I1003 17:19:12.960117 volume_growth.go:375 Created Volume 14 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:19:12.960153 volume_growth.go:388 Registered Volume 14 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:19:13.145296 master_grpc_server_volume.go:151 volume grow &{Option:{"collection":"research-release","replication":{},"ttl":{"Count":0,"Unit":0},"version":3} Count:0 Force:false Reason:grpc assign}
+I1003 17:19:13.145670 store.go:264 In dir /data (disk ID 0) adds volume:15 collection:research-release replicaPlacement:000 ttl:
+I1003 17:19:13.154480 store.go:269 add volume 15 on disk ID 0
+I1003 17:19:13.154671 volume_grpc_client_to_master.go:238 volume server 10.42.0.17:9340 adds volume 15
+I1003 17:19:13.154969 volume_growth.go:375 Created Volume 15 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:19:13.155019 volume_growth.go:388 Registered Volume 15 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:19:13.155372 store.go:264 In dir /data (disk ID 0) adds volume:16 collection:research-release replicaPlacement:000 ttl:
+I1003 17:19:13.159780 store.go:269 add volume 16 on disk ID 0
+I1003 17:19:13.159946 volume_grpc_client_to_master.go:238 volume server 10.42.0.17:9340 adds volume 16
+I1003 17:19:13.160226 volume_growth.go:375 Created Volume 16 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:19:13.160269 volume_growth.go:388 Registered Volume 16 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:19:13.160486 store.go:264 In dir /data (disk ID 0) adds volume:17 collection:research-release replicaPlacement:000 ttl:
+I1003 17:19:13.166554 store.go:269 add volume 17 on disk ID 0
+I1003 17:19:13.166708 volume_grpc_client_to_master.go:238 volume server 10.42.0.17:9340 adds volume 17
+I1003 17:19:13.167033 volume_growth.go:375 Created Volume 17 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:19:13.167097 volume_growth.go:388 Registered Volume 17 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:19:13.167398 store.go:264 In dir /data (disk ID 0) adds volume:18 collection:research-release replicaPlacement:000 ttl:
+I1003 17:19:13.171749 store.go:269 add volume 18 on disk ID 0
+I1003 17:19:13.171875 volume_grpc_client_to_master.go:238 volume server 10.42.0.17:9340 adds volume 18
+I1003 17:19:13.172201 volume_growth.go:375 Created Volume 18 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:19:13.172239 volume_growth.go:388 Registered Volume 18 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:19:13.172624 store.go:264 In dir /data (disk ID 0) adds volume:19 collection:research-release replicaPlacement:000 ttl:
+I1003 17:19:13.176178 store.go:269 add volume 19 on disk ID 0
+I1003 17:19:13.176311 volume_grpc_client_to_master.go:238 volume server 10.42.0.17:9340 adds volume 19
+I1003 17:19:13.176593 volume_growth.go:375 Created Volume 19 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:19:13.176652 volume_growth.go:388 Registered Volume 19 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:19:13.176921 store.go:264 In dir /data (disk ID 0) adds volume:20 collection:research-release replicaPlacement:000 ttl:
+I1003 17:19:13.183057 store.go:269 add volume 20 on disk ID 0
+I1003 17:19:13.183200 volume_grpc_client_to_master.go:238 volume server 10.42.0.17:9340 adds volume 20
+I1003 17:19:13.183433 volume_growth.go:375 Created Volume 20 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:19:13.183496 volume_growth.go:388 Registered Volume 20 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:19:13.183872 store.go:264 In dir /data (disk ID 0) adds volume:21 collection:research-release replicaPlacement:000 ttl:
+I1003 17:19:13.188138 store.go:269 add volume 21 on disk ID 0
+I1003 17:19:13.188276 volume_grpc_client_to_master.go:238 volume server 10.42.0.17:9340 adds volume 21
+I1003 17:19:13.188472 volume_growth.go:375 Created Volume 21 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:19:13.188511 volume_growth.go:388 Registered Volume 21 on topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340
+I1003 17:22:20.358552 master_client.go:23 the cluster has 1 filer
+I1003 17:22:22.736040 maintenance_manager.go:300 Topology status: 0 nodes, 0 disks, 1 workers, 0 pending tasks, 0 running tasks, errors: 0
+I1003 17:27:20.335346 master_client.go:23 the cluster has 1 filer
+I1003 17:27:22.716073 maintenance_manager.go:300 Topology status: 0 nodes, 0 disks, 1 workers, 0 pending tasks, 0 running tasks, errors: 0
+I1003 17:32:20.307989 master_client.go:23 the cluster has 1 filer
+I1003 17:32:22.686818 maintenance_manager.go:300 Topology status: 0 nodes, 0 disks, 1 workers, 0 pending tasks, 0 running tasks, errors: 0
+I1003 17:37:19.480024 metrics.go:609 delete inactive bucket metrics, : 2
+I1003 17:37:20.281684 master_client.go:23 the cluster has 1 filer
+I1003 17:37:22.660120 maintenance_manager.go:300 Topology status: 0 nodes, 0 disks, 1 workers, 0 pending tasks, 0 running tasks, errors: 0
+I1003 17:42:20.253247 master_client.go:23 the cluster has 1 filer
+I1003 17:42:22.632420 maintenance_manager.go:300 Topology status: 0 nodes, 0 disks, 1 workers, 0 pending tasks, 0 running tasks, errors: 0

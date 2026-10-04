@@ -1,0 +1,8 @@
+Nguồn: evidence/local-canary-attempt2.jsonl
+Lỗi đầu tiên: mẫu #7, start_s = 6.042 s
+5 lần đọc đúng liên tiếp đầu tiên: mẫu #15–#19
+end_s của mẫu #15 = 14.103 s
+T_observed = 14.103 - 6.042 = 8.061 s
+Số lần đọc lỗi = 8
+Giải thích:
+Pod UID thay đổi nhưng PVC UID giữ nguyên, đồng thời 32/32 object vẫn được xác minh đúng hash. Điều này chứng minh Pod mới đã dùng lại cùng vùng lưu trữ và dữ liệu vẫn còn truy cập được qua Service. Tuy nhiên, canary có 8 lần đọc lỗi nên hệ thống không duy trì sẵn sàng liên tục. Thử nghiệm này cũng chưa kiểm tra backup/restore hoặc mất node, vì vậy chưa thể kết luận hệ thống có backup, HA hoặc khả năng chịu mất node.

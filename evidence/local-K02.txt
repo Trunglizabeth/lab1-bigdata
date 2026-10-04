@@ -1,0 +1,33 @@
+LAST SEEN   TYPE     REASON                  OBJECT                              MESSAGE
+23m         Normal   Scheduled               pod/analyst                         Successfully assigned bd-g01/analyst to k3d-bigdata-server-0
+23m         Normal   Pulled                  pod/analyst                         Container image "trunglizabeth/s3lab@sha256:b9e7cf4d42d76b3c6e238ba4c4163bab5324ade9160ca4b5cd826d6bdcfabe93" already present on machine and can be accessed by the pod
+23m         Normal   Created                 pod/analyst                         Container created
+23m         Normal   Started                 pod/analyst                         Container started
+23m         Normal   Scheduled               pod/blocked                         Successfully assigned bd-g01/blocked to k3d-bigdata-server-0
+23m         Normal   Pulled                  pod/blocked                         Container image "trunglizabeth/s3lab@sha256:b9e7cf4d42d76b3c6e238ba4c4163bab5324ade9160ca4b5cd826d6bdcfabe93" already present on machine and can be accessed by the pod
+23m         Normal   Created                 pod/blocked                         Container created
+23m         Normal   Started                 pod/blocked                         Container started
+23m         Normal   Scheduled               pod/ingestor                        Successfully assigned bd-g01/ingestor to k3d-bigdata-server-0
+23m         Normal   Pulled                  pod/ingestor                        Container image "trunglizabeth/s3lab@sha256:b9e7cf4d42d76b3c6e238ba4c4163bab5324ade9160ca4b5cd826d6bdcfabe93" already present on machine and can be accessed by the pod
+23m         Normal   Created                 pod/ingestor                        Container created
+23m         Normal   Started                 pod/ingestor                        Container started
+24m         Normal   WaitForFirstConsumer    persistentvolumeclaim/object-data   waiting for first consumer to be created before binding
+24m         Normal   ExternalProvisioning    persistentvolumeclaim/object-data   Waiting for a volume to be created either by the external provisioner 'rancher.io/local-path' or manually by the system administrator. If volume creation is delayed, please verify that the provisioner is running and correctly registered.
+24m         Normal   Provisioning            persistentvolumeclaim/object-data   External provisioner is provisioning volume for claim "bd-g01/object-data"
+24m         Normal   ProvisioningSucceeded   persistentvolumeclaim/object-data   Successfully provisioned volume pvc-1a30965d-a990-4b7b-b3f8-f04dabd36f3e
+24m         Normal   Scheduled               pod/objects-69888b7969-77bjb        Successfully assigned bd-g01/objects-69888b7969-77bjb to k3d-bigdata-server-0
+24m         Normal   Pulling                 pod/objects-69888b7969-77bjb        Pulling image "chrislusf/seaweedfs@sha256:d7f3fdf6fb9c9375551e95bc985abae74a157789d868341e9e84a999ed8ea21c"
+23m         Normal   Pulled                  pod/objects-69888b7969-77bjb        Successfully pulled image "chrislusf/seaweedfs@sha256:d7f3fdf6fb9c9375551e95bc985abae74a157789d868341e9e84a999ed8ea21c" in 14.138s (14.138s including waiting). Image size: 106946901 bytes.
+23m         Normal   Created                 pod/objects-69888b7969-77bjb        Container created
+23m         Normal   Started                 pod/objects-69888b7969-77bjb        Container started
+24m         Normal   SuccessfulCreate        replicaset/objects-69888b7969       Created pod: objects-69888b7969-77bjb
+24m         Normal   ScalingReplicaSet       deployment/objects                  Scaled up replica set objects-69888b7969 from 0 to 1
+23m         Normal   Scheduled               pod/owner                           Successfully assigned bd-g01/owner to k3d-bigdata-server-0
+23m         Normal   Pulled                  pod/owner                           Container image "trunglizabeth/s3lab@sha256:b9e7cf4d42d76b3c6e238ba4c4163bab5324ade9160ca4b5cd826d6bdcfabe93" already present on machine and can be accessed by the pod
+23m         Normal   Created                 pod/owner                           Container created
+23m         Normal   Started                 pod/owner                           Container started
+46m         Normal   Scheduled               pod/quota-positive                  Successfully assigned bd-g01/quota-positive to k3d-bigdata-server-0
+46m         Normal   Pulled                  pod/quota-positive                  Container image "trunglizabeth/s3lab@sha256:b9e7cf4d42d76b3c6e238ba4c4163bab5324ade9160ca4b5cd826d6bdcfabe93" already present on machine and can be accessed by the pod
+46m         Normal   Created                 pod/quota-positive                  Container created
+46m         Normal   Started                 pod/quota-positive                  Container started
+45m         Normal   Killing                 pod/quota-positive                  Stopping container quota-positive

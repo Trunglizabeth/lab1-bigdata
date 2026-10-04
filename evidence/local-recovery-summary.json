@@ -1,0 +1,16 @@
+{
+  "pod_uid_before": "bbfe0342-205d-4de2-8313-7922328e3ca4",
+  "pod_uid_after": "629e8a37-6f5c-4c54-af33-0b82d272fdd2",
+  "pod_uid_changed": true,
+  "pvc_uid": "1a30965d-a990-4b7b-b3f8-f04dabd36f3e",
+  "pvc_uid_unchanged": true,
+  "verified_before": 32,
+  "verified_after": 32,
+  "failed_reads": 8,
+  "first_failure_start_s": 6.042,
+  "stable_read_end_s": 14.103,
+  "observed_interruption_s": 8.061,
+  "sampling_limit": "Canary đọc khoảng mỗi giây; đây là khoảng gián đoạn quan sát được, không phải thời gian mất dịch vụ chính xác.",
+  "policy_retests": ["S06", "S08", "S10"],
+  "unproven": ["high availability", "backup restore", "node-loss durability", "crash consistency"]
+}
