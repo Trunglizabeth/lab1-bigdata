@@ -1,0 +1,32 @@
+[
+  {
+    "bucket": "research-raw",
+    "owner": "STUDENT_ID_A",
+    "steward": "STUDENT_ID_E",
+    "approved_by": "STUDENT_ID_C",
+    "cleanup_owner": "STUDENT_ID_OR_INSTRUCTOR",
+    "classification": "synthetic-restricted",
+    "purpose": "lab ingestion",
+    "retention": "assessment completion + 7 days",
+    "intended_cleanup_date": "YYYY-MM-DD",
+    "retention_enforced": false,
+    "access_policy": "bucket-scoped roles",
+    "verified_tests": ["S01", "S02", "S03", "S10", "S11"],
+    "policy_revision": "GIT_COMMIT_ID"
+  },
+  {
+    "bucket": "research-release",
+    "owner": "STUDENT_ID_A",
+    "steward": "STUDENT_ID_E",
+    "approved_by": "STUDENT_ID_C",
+    "cleanup_owner": "STUDENT_ID_OR_INSTRUCTOR",
+    "classification": "synthetic-approved-release",
+    "purpose": "lab approved-release fixture",
+    "retention": "assessment completion + 7 days",
+    "intended_cleanup_date": "YYYY-MM-DD",
+    "retention_enforced": false,
+    "access_policy": "bucket-scoped roles",
+    "verified_tests": ["S04", "S05", "S06", "S07", "S08", "S09", "S12"],
+    "policy_revision": "GIT_COMMIT_ID"
+  }
+]
