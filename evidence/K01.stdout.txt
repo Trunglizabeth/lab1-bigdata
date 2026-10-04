@@ -1,0 +1,6 @@
+NAME                       READY   STATUS    RESTARTS   AGE
+analyst                    1/1     Running   0          14m
+blocked                    1/1     Running   0          14m
+ingestor                   1/1     Running   0          14m
+objects-69888b7969-cqk8z   1/1     Running   0          15m
+owner                      1/1     Running   0          14m

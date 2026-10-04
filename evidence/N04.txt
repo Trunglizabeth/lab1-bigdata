@@ -1,0 +1,1 @@
+{"error": "ConnectionRefusedError", "host": "objects.bd-g01.svc.cluster.local", "port": 8333, "seconds": 0.004885967000063829, "tcp_connected": false, "utc": "2026-10-04T15:08:17.392060+00:00"}

@@ -1,0 +1,23 @@
+test_id,principal,target,expected,actual,status,operator,reviewer,evidence
+S01,S3:ingestor,PUT research-raw/auth-probe.txt,Allow,principal=ingestor; HTTP 200; error=None; ok=True,pass,Trung,PENDING,evidence/S01.json
+S02,S3:ingestor,GET research-raw/fixture.txt,Allow,principal=ingestor; HTTP 200; error=None; ok=True; sha256=fixture,pass,Trung,PENDING,evidence/S02.json
+S03,S3:ingestor,LIST research-raw,Allow,principal=ingestor; HTTP 200; error=None; ok=True; keys=3,pass,Trung,PENDING,evidence/S03.json
+S04,S3:ingestor,PUT research-release/auth-probe.txt,Deny,principal=ingestor; HTTP 403; error=AccessDenied; ok=False,pass,Trung,PENDING,evidence/S04.json
+S05,S3:ingestor,GET research-release/fixture.txt,Deny,principal=ingestor; HTTP 403; error=AccessDenied; ok=False,pass,Trung,PENDING,evidence/S05.json
+S06,S3:analyst,GET research-release/fixture.txt,Allow,principal=analyst; HTTP 200; error=None; ok=True; sha256=fixture,pass,Trung,PENDING,evidence/S06.json
+S07,S3:analyst,LIST research-release,Allow,principal=analyst; HTTP 200; error=None; ok=True; keys=2,pass,Trung,PENDING,evidence/S07.json
+S08,S3:analyst,PUT research-release/auth-probe.txt,Deny,principal=analyst; HTTP 403; error=AccessDenied; ok=False,pass,Trung,PENDING,evidence/S08.json
+S09,S3:analyst,DELETE research-release/delete-probe.txt,Deny,principal=analyst; HTTP 403; error=AccessDenied; ok=False,pass,Trung,PENDING,evidence/S09.json
+S10,S3:analyst,GET research-raw/fixture.txt,Deny,principal=analyst; HTTP 403; error=AccessDenied; ok=False,pass,Trung,PENDING,evidence/S10.json
+S11,S3:analyst,LIST research-raw,Deny,principal=analyst; HTTP 403; error=AccessDenied; ok=False,pass,Trung,PENDING,evidence/S11.json
+S12,S3:anonymous,GET research-release/fixture.txt,Deny,principal=anonymous; HTTP 403; error=AccessDenied; ok=False,pass,Trung,PENDING,evidence/S12.json
+K01,system:serviceaccount:bd-g01:observer,bd-g01: list pods,Allow,allowed; stdout_lines=6,pass,Trung,PENDING,evidence/K01.stdout.txt;evidence/K01.stderr.txt
+K02,system:serviceaccount:bd-g01:observer,bd-g01: get events,Allow,allowed; stdout_lines=34,pass,Trung,PENDING,evidence/K02.stdout.txt;evidence/K02.stderr.txt
+K03,system:serviceaccount:bd-g01:observer,bd-g01: get pods/log (storage Pod),Allow,allowed; stdout_lines=274,pass,Trung,PENDING,evidence/K03.stdout.txt;evidence/K03.stderr.txt
+K04,system:serviceaccount:bd-g01:observer,bd-g01: get secret s3-config,Deny,"Forbidden: Error from server (Forbidden): secrets ""s3-config"" is forbidden: User ""system:serviceaccount:bd-g01:observer"" cannot get resource ""secrets"" in API group """" in the namespace ""bd-g01""",pass,Trung,PENDING,evidence/K04.stdout.txt;evidence/K04.stderr.txt
+K05,system:serviceaccount:bd-g01:observer,bd-g01: create pod (dry-run=server),Deny,"Forbidden: Error from server (Forbidden): error when creating ""manifests/positive.yaml"": pods is forbidden: User ""system:serviceaccount:bd-g01:observer"" cannot create resource ""pods"" in API group """" in the names",pass,Trung,PENDING,evidence/K05.stdout.txt;evidence/K05.stderr.txt
+K06,system:serviceaccount:bd-g01:observer,bd-g01: delete storage pod (dry-run=server),Deny,"Forbidden: Error from server (Forbidden): pods ""objects-69888b7969-cqk8z"" is forbidden: User ""system:serviceaccount:bd-g01:observer"" cannot delete resource ""pods"" in API group """" in the namespace ""bd-g01""",pass,Trung,PENDING,evidence/K06.stdout.txt;evidence/K06.stderr.txt
+N01,owner (access=s3) in bd-g01,objects:8333,Connect,tcp_connected=true,pass,Trung,PENDING,evidence/N01.txt
+N02,blocked (no access label) in bd-g01,objects:8333,Blocked,tcp_connected=false (ConnectionRefusedError); positive control after=true,pass,Trung,PENDING,evidence/N02.txt;evidence/N01-after-N02.txt
+N03,owner (access=s3) in bd-g01,storage PodIP:8888,Blocked,tcp_connected=false (ConnectionRefusedError); positive control after=true; port 8888 listening (storage log),pass,Trung,PENDING,evidence/N03.txt;evidence/N01-after-N03.txt;evidence/N03-listen-check.txt
+N04,bd-outsider/outsider (access=s3),objects.bd-g01.svc.cluster.local:8333,Blocked,tcp_connected=false (ConnectionRefusedError); positive control after=true; DNS resolved 10.43.229.103; no NetworkPolicy in bd-outsider,pass,Trung,PENDING,evidence/N04.txt;evidence/N01-after-N04.txt;evidence/N04-dns.txt;evidence/N04-outsider-netpol.txt

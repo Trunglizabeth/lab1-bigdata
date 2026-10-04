@@ -1,0 +1,19 @@
+I1004 14:48:11.315739 mini.go:527 Final port configuration - Master: 9333, Filer: 8888, Volume: 9340, S3: 8333, Iceberg: 8181, WebDAV: 7333, Admin: 23646
+I1004 14:48:11.316402 mini.go:532 gRPC port configuration - Master: 19333, Filer: 18888, Volume: 19340, S3: 18333, Admin: 33646
+I1004 14:48:11.720948 mini.go:908 Filer service starting...
+I1004 14:48:11.728284 master_grpc_server.go:404 + client .filer@10.42.0.11:8888.18888
+I1004 14:48:11.728432 masterclient.go:244 + master@10.42.0.11:9333 noticed .filer 10.42.0.11:8888.18888
+I1004 14:48:11.820433 filer_server.go:241 10.42.0.11:8888 bootstrap from peers [node_type:"filer" address:"10.42.0.11:8888.18888" is_add:true created_at_ns:1791125291728297275]
+I1004 14:48:11.820464 filer.go:121 10.42.0.11:8888 aggregate from peers [10.42.0.11:8888]
+I1004 14:48:11.822572 filer.go:393 Start Seaweed Filer 30GB 4.12 2d9768539 at 10.42.0.11:8888
+I1004 14:48:11.822645 meta_aggregator.go:80 loopSubscribeToOneFiler read 10.42.0.11:8888 start from 2026-10-04 14:47:11.820428424 +0000 UTC 1791125231820428424
+I1004 14:48:11.823749 meta_aggregator.go:185 subscribing remote 10.42.0.11:8888 meta change: 2026-10-04 14:47:11.820428424 +0000 UTC, clientId:77238346
+I1004 14:48:11.863212 filer_grpc_server_sub_meta.go:411 + local listener filer:10.42.0.11:8888.18888@10.42.0.11:42380 clientId -77238346 clientEpoch 1
+I1004 14:48:11.863261 filer_grpc_server_sub_meta.go:163  + filer:10.42.0.11:8888.18888@10.42.0.11:42380 local subscribe / from {Time:2026-10-04 14:47:11.820428424 +0000 UTC Offset:-2 IsOffsetBased:false} clientId:-77238346
+I1004 14:48:11.922028 mini.go:926 Filer service is ready at http://10.42.0.11:8888
+I1004 14:48:11.922508 webdav.go:109 connected to filer 10.42.0.11:8888.18888 grpc address 10.42.0.11:18888
+I1004 14:48:11.922546 s3.go:260 connected to filers [10.42.0.11:8888]
+I1004 14:48:11.924737 masterclient.go:244 + filer@10.42.0.11:8888 noticed .s3 10.42.0.11:18333
+Discovered filers: 10.42.0.11:8888.18888
+    Filer UI:        http://10.42.0.11:8888
+I1004 14:48:51.915080 lock_client.go:107 Lock owner changed from  to 10.42.0.11:8888.18888-s3-metrics
