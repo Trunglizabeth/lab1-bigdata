@@ -1,0 +1,11 @@
+Name:                   team-budget
+Namespace:              bd-g01
+Resource                Used  Hard
+--------                ----  ----
+limits.cpu              3     4
+limits.memory           3Gi   4Gi
+persistentvolumeclaims  1     2
+pods                    5     10
+requests.cpu            900m  2
+requests.memory         1Gi   2Gi
+requests.storage        4Gi   8Gi

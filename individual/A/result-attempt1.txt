@@ -1,0 +1,1 @@
+Error from server (Forbidden): error when creating "individual/A/probe-pod.yaml": pods "quota-probe-a" is forbidden: exceeded quota: team-budget, requested: limits.cpu=1200m, used: limits.cpu=3, limited: limits.cpu=4

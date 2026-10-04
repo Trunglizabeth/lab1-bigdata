@@ -1,0 +1,10 @@
+req cpu: 900 + 100 = 1000
+lim cpu: 3000 + 200 = 3200
+req mem: 1024 + 1024 = 2048  
+lim mem: 3072 + 1024 = 4096
+pods: 5 + 1 = 6
+=> admit
+Câu 1: Kết quả lần 2 là bị từ chối, khớp với dự đoán.
+       Hai dòng memory có tổng 2048  và 4096, bằng đúng trần, nhưng vẫn được nhận vì quy tắc là tổng bé hơn hoặc bằng  trần.
+
+
