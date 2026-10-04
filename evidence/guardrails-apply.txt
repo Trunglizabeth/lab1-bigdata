@@ -1,0 +1,5 @@
+resourcequota/team-budget created
+networkpolicy.networking.k8s.io/private-object-store created
+serviceaccount/observer created
+role.rbac.authorization.k8s.io/observer created
+rolebinding.rbac.authorization.k8s.io/observer created

@@ -1,0 +1,2 @@
+Error from server (Forbidden): error when creating "manifests/negative.yaml": pods "quota-negative" is forbidden: exceeded quota: team-budget, requested: requests.cpu=3, used: requests.cpu=100m, limited: requests.cpu=2
+Error from server (NotFound): pods "quota-negative" not found
