@@ -1,5 +1,7 @@
 # Hướng dẫn cài đặt môi trường — Lab 1: Cluster Configuration
 
+> **Buổi chạy chính thức và đóng gói bài nộp `team-XX/`:** xem [`SUBMISSION.md`](SUBMISSION.md).
+
 Note này giúp anh em dựng một môi trường giống hệt nhau trên máy cá nhân để làm từng task của mình
 
 > **Lưu ý:** cluster trên máy cá nhân chỉ dùng để luyện tập. Evidence nộp chính thức được chạy trên một cluster duy nhất (máy của t) trong buổi làm chung, để UID, Pod và dữ liệu khớp nhau từ Task 1 đến Task 5. **Không commit thư mục `evidence/` từ máy cá nhân.**

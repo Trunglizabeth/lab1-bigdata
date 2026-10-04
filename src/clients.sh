@@ -4,6 +4,9 @@
 # Khác bản PDF: dựng LABELS riêng để không sinh "{role: blocked, }" (dấu phẩy thừa).
 set -eu
 : "${NS:?}" "${CLIENT_IMAGE:?}"
+# Lưu đúng YAML đã apply vào manifests/clients-applied.yaml (không chứa key, chỉ tham chiếu Secret).
+OUT=manifests/clients-applied.yaml
+: > "$OUT"
 for role in owner ingestor analyst blocked; do
   LABELS="{role: $role}"
   CREDS=""
@@ -11,7 +14,7 @@ for role in owner ingestor analyst blocked; do
     LABELS="{role: $role, access: s3}"
     CREDS="envFrom: [{secretRef: {name: s3-$role}}]"
   fi
-  cat <<YAML | kubectl -n "$NS" apply -f -
+  { echo "---"; cat <<YAML
 apiVersion: v1
 kind: Pod
 metadata:
@@ -36,6 +39,7 @@ spec:
     - {name: PRINCIPAL, value: '$role'}
     $CREDS
 YAML
+  } | tee -a "$OUT" | kubectl -n "$NS" apply -f -
 done
 kubectl -n "$NS" wait --for=condition=Ready pod/owner pod/ingestor \
   pod/analyst pod/blocked --timeout=120s
