@@ -1,0 +1,32 @@
+[
+  {
+    "bucket": "research-raw",
+    "owner": "24022476",
+    "steward": "24022260",
+    "approved_by": "24022475",
+    "cleanup_owner": "instructor",
+    "classification": "synthetic-restricted",
+    "purpose": "lab ingestion",
+    "retention": "assessment completion + 7 days",
+    "intended_cleanup_date": "2026-10-18",
+    "retention_enforced": false,
+    "access_policy": "bucket-scoped roles",
+    "verified_tests": ["S01", "S02", "S03", "S10", "S11"],
+    "policy_revision": "ed040477b8c3ca2acf78d5f0741951b2c201d955"
+  },
+  {
+    "bucket": "research-release",
+    "owner": "24022476",
+    "steward": "24022260",
+    "approved_by": "24022475",
+    "cleanup_owner": "instructor",
+    "classification": "synthetic-approved-release",
+    "purpose": "lab approved-release fixture",
+    "retention": "assessment completion + 7 days",
+    "intended_cleanup_date": "2026-10-18",
+    "retention_enforced": false,
+    "access_policy": "bucket-scoped roles",
+    "verified_tests": ["S04", "S05", "S06", "S07", "S08", "S09", "S12"],
+    "policy_revision": "ed040477b8c3ca2acf78d5f0741951b2c201d955"
+  }
+]

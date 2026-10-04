@@ -1,0 +1,541 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Pod","metadata":{"annotations":{},"labels":{"access":"s3","role":"owner"},"name":"owner","namespace":"bd-g01"},"spec":{"automountServiceAccountToken":false,"containers":[{"command":["sleep","infinity"],"env":[{"name":"S3_ENDPOINT","value":"http://objects:8333"},{"name":"PRINCIPAL","value":"owner"}],"envFrom":[{"secretRef":{"name":"s3-owner"}}],"image":"trunglizabeth/s3lab@sha256:b9e7cf4d42d76b3c6e238ba4c4163bab5324ade9160ca4b5cd826d6bdcfabe93","name":"client","resources":{"limits":{"cpu":"500m","memory":"512Mi"},"requests":{"cpu":"100m","memory":"128Mi"}},"securityContext":{"allowPrivilegeEscalation":false,"capabilities":{"drop":["ALL"]},"seccompProfile":{"type":"RuntimeDefault"}}}],"securityContext":{"runAsNonRoot":true,"runAsUser":1000}}}
+    creationTimestamp: "2026-10-04T14:48:33Z"
+    generation: 1
+    labels:
+      access: s3
+      role: owner
+    name: owner
+    namespace: bd-g01
+    resourceVersion: "1237"
+    uid: 93127928-eda1-4a51-8847-073ec89d3612
+  spec:
+    automountServiceAccountToken: false
+    containers:
+    - command:
+      - sleep
+      - infinity
+      env:
+      - name: S3_ENDPOINT
+        value: http://objects:8333
+      - name: PRINCIPAL
+        value: owner
+      envFrom:
+      - secretRef:
+          name: s3-owner
+      image: trunglizabeth/s3lab@sha256:b9e7cf4d42d76b3c6e238ba4c4163bab5324ade9160ca4b5cd826d6bdcfabe93
+      imagePullPolicy: IfNotPresent
+      name: client
+      resources:
+        limits:
+          cpu: 500m
+          memory: 512Mi
+        requests:
+          cpu: 100m
+          memory: 128Mi
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+          - ALL
+        seccompProfile:
+          type: RuntimeDefault
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: k3d-bigdata-server-0
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      runAsNonRoot: true
+      runAsUser: 1000
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-04T14:48:34Z"
+      observedGeneration: 1
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-04T14:48:33Z"
+      observedGeneration: 1
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-04T14:48:34Z"
+      observedGeneration: 1
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-04T14:48:34Z"
+      observedGeneration: 1
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-04T14:48:33Z"
+      observedGeneration: 1
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - allocatedResources:
+        cpu: 100m
+        memory: 128Mi
+      containerID: containerd://67a1e3b679e5332d990d42ccdf5e0e7a1f02ecce0b6bfffab457b7a3589be4f1
+      image: sha256:f5093ecd7ae2562e9239e93343c26936560cc447dc81d6e9e5448134fac43726
+      imageID: docker.io/trunglizabeth/s3lab@sha256:b9e7cf4d42d76b3c6e238ba4c4163bab5324ade9160ca4b5cd826d6bdcfabe93
+      lastState: {}
+      name: client
+      ready: true
+      resources:
+        limits:
+          cpu: 500m
+          memory: 512Mi
+        requests:
+          cpu: 100m
+          memory: 128Mi
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2026-10-04T14:48:33Z"
+      user:
+        linux:
+          gid: 0
+          supplementalGroups:
+          - 0
+          uid: 1000
+    hostIP: 172.20.0.3
+    hostIPs:
+    - ip: 172.20.0.3
+    observedGeneration: 1
+    phase: Running
+    podIP: 10.42.0.12
+    podIPs:
+    - ip: 10.42.0.12
+    qosClass: Burstable
+    startTime: "2026-10-04T14:48:33Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Pod","metadata":{"annotations":{},"labels":{"access":"s3","role":"ingestor"},"name":"ingestor","namespace":"bd-g01"},"spec":{"automountServiceAccountToken":false,"containers":[{"command":["sleep","infinity"],"env":[{"name":"S3_ENDPOINT","value":"http://objects:8333"},{"name":"PRINCIPAL","value":"ingestor"}],"envFrom":[{"secretRef":{"name":"s3-ingestor"}}],"image":"trunglizabeth/s3lab@sha256:b9e7cf4d42d76b3c6e238ba4c4163bab5324ade9160ca4b5cd826d6bdcfabe93","name":"client","resources":{"limits":{"cpu":"500m","memory":"512Mi"},"requests":{"cpu":"100m","memory":"128Mi"}},"securityContext":{"allowPrivilegeEscalation":false,"capabilities":{"drop":["ALL"]},"seccompProfile":{"type":"RuntimeDefault"}}}],"securityContext":{"runAsNonRoot":true,"runAsUser":1000}}}
+    creationTimestamp: "2026-10-04T14:48:33Z"
+    generation: 1
+    labels:
+      access: s3
+      role: ingestor
+    name: ingestor
+    namespace: bd-g01
+    resourceVersion: "1239"
+    uid: c4e7caf3-9b38-42ea-a7b3-5a12e6ce8555
+  spec:
+    automountServiceAccountToken: false
+    containers:
+    - command:
+      - sleep
+      - infinity
+      env:
+      - name: S3_ENDPOINT
+        value: http://objects:8333
+      - name: PRINCIPAL
+        value: ingestor
+      envFrom:
+      - secretRef:
+          name: s3-ingestor
+      image: trunglizabeth/s3lab@sha256:b9e7cf4d42d76b3c6e238ba4c4163bab5324ade9160ca4b5cd826d6bdcfabe93
+      imagePullPolicy: IfNotPresent
+      name: client
+      resources:
+        limits:
+          cpu: 500m
+          memory: 512Mi
+        requests:
+          cpu: 100m
+          memory: 128Mi
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+          - ALL
+        seccompProfile:
+          type: RuntimeDefault
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: k3d-bigdata-server-0
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      runAsNonRoot: true
+      runAsUser: 1000
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-04T14:48:34Z"
+      observedGeneration: 1
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-04T14:48:33Z"
+      observedGeneration: 1
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-04T14:48:34Z"
+      observedGeneration: 1
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-04T14:48:34Z"
+      observedGeneration: 1
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-04T14:48:33Z"
+      observedGeneration: 1
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - allocatedResources:
+        cpu: 100m
+        memory: 128Mi
+      containerID: containerd://9be34fc91e04ca36f60fa4a9c64ccae92c268b6210bd0599bf163d8f55aa1225
+      image: sha256:f5093ecd7ae2562e9239e93343c26936560cc447dc81d6e9e5448134fac43726
+      imageID: docker.io/trunglizabeth/s3lab@sha256:b9e7cf4d42d76b3c6e238ba4c4163bab5324ade9160ca4b5cd826d6bdcfabe93
+      lastState: {}
+      name: client
+      ready: true
+      resources:
+        limits:
+          cpu: 500m
+          memory: 512Mi
+        requests:
+          cpu: 100m
+          memory: 128Mi
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2026-10-04T14:48:34Z"
+      user:
+        linux:
+          gid: 0
+          supplementalGroups:
+          - 0
+          uid: 1000
+    hostIP: 172.20.0.3
+    hostIPs:
+    - ip: 172.20.0.3
+    observedGeneration: 1
+    phase: Running
+    podIP: 10.42.0.13
+    podIPs:
+    - ip: 10.42.0.13
+    qosClass: Burstable
+    startTime: "2026-10-04T14:48:33Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Pod","metadata":{"annotations":{},"labels":{"access":"s3","role":"analyst"},"name":"analyst","namespace":"bd-g01"},"spec":{"automountServiceAccountToken":false,"containers":[{"command":["sleep","infinity"],"env":[{"name":"S3_ENDPOINT","value":"http://objects:8333"},{"name":"PRINCIPAL","value":"analyst"}],"envFrom":[{"secretRef":{"name":"s3-analyst"}}],"image":"trunglizabeth/s3lab@sha256:b9e7cf4d42d76b3c6e238ba4c4163bab5324ade9160ca4b5cd826d6bdcfabe93","name":"client","resources":{"limits":{"cpu":"500m","memory":"512Mi"},"requests":{"cpu":"100m","memory":"128Mi"}},"securityContext":{"allowPrivilegeEscalation":false,"capabilities":{"drop":["ALL"]},"seccompProfile":{"type":"RuntimeDefault"}}}],"securityContext":{"runAsNonRoot":true,"runAsUser":1000}}}
+    creationTimestamp: "2026-10-04T14:48:33Z"
+    generation: 1
+    labels:
+      access: s3
+      role: analyst
+    name: analyst
+    namespace: bd-g01
+    resourceVersion: "1236"
+    uid: 6b95510b-e3fc-4cfc-b2a3-a567dce1a641
+  spec:
+    automountServiceAccountToken: false
+    containers:
+    - command:
+      - sleep
+      - infinity
+      env:
+      - name: S3_ENDPOINT
+        value: http://objects:8333
+      - name: PRINCIPAL
+        value: analyst
+      envFrom:
+      - secretRef:
+          name: s3-analyst
+      image: trunglizabeth/s3lab@sha256:b9e7cf4d42d76b3c6e238ba4c4163bab5324ade9160ca4b5cd826d6bdcfabe93
+      imagePullPolicy: IfNotPresent
+      name: client
+      resources:
+        limits:
+          cpu: 500m
+          memory: 512Mi
+        requests:
+          cpu: 100m
+          memory: 128Mi
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+          - ALL
+        seccompProfile:
+          type: RuntimeDefault
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: k3d-bigdata-server-0
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      runAsNonRoot: true
+      runAsUser: 1000
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-04T14:48:34Z"
+      observedGeneration: 1
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-04T14:48:33Z"
+      observedGeneration: 1
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-04T14:48:34Z"
+      observedGeneration: 1
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-04T14:48:34Z"
+      observedGeneration: 1
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-04T14:48:33Z"
+      observedGeneration: 1
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - allocatedResources:
+        cpu: 100m
+        memory: 128Mi
+      containerID: containerd://e43fc1d9258af91a8c12ce9b1420ebee6b6abccce3f6f77e28af70f8cba91be6
+      image: sha256:f5093ecd7ae2562e9239e93343c26936560cc447dc81d6e9e5448134fac43726
+      imageID: docker.io/trunglizabeth/s3lab@sha256:b9e7cf4d42d76b3c6e238ba4c4163bab5324ade9160ca4b5cd826d6bdcfabe93
+      lastState: {}
+      name: client
+      ready: true
+      resources:
+        limits:
+          cpu: 500m
+          memory: 512Mi
+        requests:
+          cpu: 100m
+          memory: 128Mi
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2026-10-04T14:48:34Z"
+      user:
+        linux:
+          gid: 0
+          supplementalGroups:
+          - 0
+          uid: 1000
+    hostIP: 172.20.0.3
+    hostIPs:
+    - ip: 172.20.0.3
+    observedGeneration: 1
+    phase: Running
+    podIP: 10.42.0.14
+    podIPs:
+    - ip: 10.42.0.14
+    qosClass: Burstable
+    startTime: "2026-10-04T14:48:33Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Pod","metadata":{"annotations":{},"labels":{"role":"blocked"},"name":"blocked","namespace":"bd-g01"},"spec":{"automountServiceAccountToken":false,"containers":[{"command":["sleep","infinity"],"env":[{"name":"S3_ENDPOINT","value":"http://objects:8333"},{"name":"PRINCIPAL","value":"blocked"}],"image":"trunglizabeth/s3lab@sha256:b9e7cf4d42d76b3c6e238ba4c4163bab5324ade9160ca4b5cd826d6bdcfabe93","name":"client","resources":{"limits":{"cpu":"500m","memory":"512Mi"},"requests":{"cpu":"100m","memory":"128Mi"}},"securityContext":{"allowPrivilegeEscalation":false,"capabilities":{"drop":["ALL"]},"seccompProfile":{"type":"RuntimeDefault"}}}],"securityContext":{"runAsNonRoot":true,"runAsUser":1000}}}
+    creationTimestamp: "2026-10-04T14:48:34Z"
+    generation: 1
+    labels:
+      role: blocked
+    name: blocked
+    namespace: bd-g01
+    resourceVersion: "1238"
+    uid: 1e161c41-363e-4b80-b482-745a178ee665
+  spec:
+    automountServiceAccountToken: false
+    containers:
+    - command:
+      - sleep
+      - infinity
+      env:
+      - name: S3_ENDPOINT
+        value: http://objects:8333
+      - name: PRINCIPAL
+        value: blocked
+      image: trunglizabeth/s3lab@sha256:b9e7cf4d42d76b3c6e238ba4c4163bab5324ade9160ca4b5cd826d6bdcfabe93
+      imagePullPolicy: IfNotPresent
+      name: client
+      resources:
+        limits:
+          cpu: 500m
+          memory: 512Mi
+        requests:
+          cpu: 100m
+          memory: 128Mi
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+          - ALL
+        seccompProfile:
+          type: RuntimeDefault
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: k3d-bigdata-server-0
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      runAsNonRoot: true
+      runAsUser: 1000
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-04T14:48:34Z"
+      observedGeneration: 1
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-04T14:48:34Z"
+      observedGeneration: 1
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-04T14:48:34Z"
+      observedGeneration: 1
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-04T14:48:34Z"
+      observedGeneration: 1
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-04T14:48:34Z"
+      observedGeneration: 1
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - allocatedResources:
+        cpu: 100m
+        memory: 128Mi
+      containerID: containerd://11c09c31ac62336fa0c31cd3b9323f3112e81cfc8a68c33bef24e57c722ef4f8
+      image: sha256:f5093ecd7ae2562e9239e93343c26936560cc447dc81d6e9e5448134fac43726
+      imageID: docker.io/trunglizabeth/s3lab@sha256:b9e7cf4d42d76b3c6e238ba4c4163bab5324ade9160ca4b5cd826d6bdcfabe93
+      lastState: {}
+      name: client
+      ready: true
+      resources:
+        limits:
+          cpu: 500m
+          memory: 512Mi
+        requests:
+          cpu: 100m
+          memory: 128Mi
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2026-10-04T14:48:34Z"
+      user:
+        linux:
+          gid: 0
+          supplementalGroups:
+          - 0
+          uid: 1000
+    hostIP: 172.20.0.3
+    hostIPs:
+    - ip: 172.20.0.3
+    observedGeneration: 1
+    phase: Running
+    podIP: 10.42.0.15
+    podIPs:
+    - ip: 10.42.0.15
+    qosClass: Burstable
+    startTime: "2026-10-04T14:48:34Z"
+kind: List
+metadata:
+  resourceVersion: ""
