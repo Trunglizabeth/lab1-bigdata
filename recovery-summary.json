@@ -1,0 +1,67 @@
+{
+  "pod_name_before": "objects-69888b7969-cqk8z",
+  "pod_name_after": "objects-69888b7969-zd4bz",
+  "pod_uid_before": "c5b82e5c-fbd1-4a16-bba9-027d17bf9c1b",
+  "pod_uid_after": "88abb925-89d1-429e-8922-30abe2ab7ef6",
+  "pod_uid_changed": true,
+  "pods_after": 1,
+  "pvc_uid_before": "fa79cc71-194b-4483-a8bf-ecd44ded0499",
+  "pvc_uid_after": "fa79cc71-194b-4483-a8bf-ecd44ded0499",
+  "pvc_uid_unchanged": true,
+  "pvc_phase_after": "Bound",
+  "pv_volume": "pvc-fa79cc71-194b-4483-a8bf-ecd44ded0499",
+  "node_before": "k3d-bigdata-server-0",
+  "node_after": "k3d-bigdata-server-0",
+  "image_id_after": "docker.io/chrislusf/seaweedfs@sha256:d7f3fdf6fb9c9375551e95bc985abae74a157789d868341e9e84a999ed8ea21c",
+  "verified_before": {
+    "objects_verified": 32,
+    "complete": true
+  },
+  "verified_after": {
+    "objects_verified": 32,
+    "complete": true
+  },
+  "delete_time_utc": "2026-10-04T15:28:35+00:00",
+  "rollout_complete_utc": "2026-10-04T15:28:54+00:00",
+  "delete_to_rollout_s": 19.0,
+  "recovery_target_s": 120,
+  "ready_within_target": true,
+  "canary_samples": 180,
+  "failed_reads": 5,
+  "first_failure_start_s": 52.280651515000045,
+  "first_failure_utc": "2026-10-04T15:28:41.676893+00:00",
+  "first_failure_error": "EndpointConnectionError",
+  "stable_read_end_s": 57.3034556409998,
+  "observed_interruption_s": 5.023,
+  "interruption_within_target": true,
+  "interruption_note": "T_observed = stable_read_end_s - first_failure_start_s",
+  "sampling_limit": "Canary reads approximately once per second; request durations vary. Observed interruption is not exact downtime.",
+  "policy_retests": {
+    "S06": {
+      "http": 200,
+      "error": null,
+      "expected": "allow",
+      "pass": true
+    },
+    "S08": {
+      "http": 403,
+      "error": "AccessDenied",
+      "expected": "deny",
+      "pass": true
+    },
+    "S10": {
+      "http": 403,
+      "error": "AccessDenied",
+      "expected": "deny",
+      "pass": true
+    }
+  },
+  "unproven": [
+    "high availability",
+    "backup restore",
+    "crash consistency",
+    "node-loss durability",
+    "TLS",
+    "encryption at rest"
+  ]
+}

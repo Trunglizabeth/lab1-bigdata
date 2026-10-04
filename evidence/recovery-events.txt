@@ -1,0 +1,40 @@
+LAST SEEN   TYPE     REASON                  OBJECT                              MESSAGE
+44m         Normal   Scheduled               pod/ingestor                        Successfully assigned bd-g01/ingestor to k3d-bigdata-server-0
+45m         Normal   Scheduled               pod/objects-69888b7969-cqk8z        Successfully assigned bd-g01/objects-69888b7969-cqk8z to k3d-bigdata-server-0
+44m         Normal   Scheduled               pod/owner                           Successfully assigned bd-g01/owner to k3d-bigdata-server-0
+44m         Normal   Scheduled               pod/analyst                         Successfully assigned bd-g01/analyst to k3d-bigdata-server-0
+44m         Normal   Scheduled               pod/blocked                         Successfully assigned bd-g01/blocked to k3d-bigdata-server-0
+4m26s       Normal   Scheduled               pod/objects-69888b7969-zd4bz        Successfully assigned bd-g01/objects-69888b7969-zd4bz to k3d-bigdata-server-0
+56m         Normal   Scheduled               pod/quota-positive                  Successfully assigned bd-g01/quota-positive to k3d-bigdata-server-0
+56m         Normal   Pulling                 pod/quota-positive                  Pulling image "trunglizabeth/s3lab@sha256:b9e7cf4d42d76b3c6e238ba4c4163bab5324ade9160ca4b5cd826d6bdcfabe93"
+56m         Normal   Pulled                  pod/quota-positive                  Successfully pulled image "trunglizabeth/s3lab@sha256:b9e7cf4d42d76b3c6e238ba4c4163bab5324ade9160ca4b5cd826d6bdcfabe93" in 9.77s (9.77s including waiting). Image size: 64333157 bytes.
+56m         Normal   Started                 pod/quota-positive                  Container started
+56m         Normal   Created                 pod/quota-positive                  Container created
+54m         Normal   Killing                 pod/quota-positive                  Stopping container quota-positive
+45m         Normal   SuccessfulCreate        replicaset/objects-69888b7969       Created pod: objects-69888b7969-cqk8z
+45m         Normal   ScalingReplicaSet       deployment/objects                  Scaled up replica set objects-69888b7969 from 0 to 1
+45m         Normal   WaitForFirstConsumer    persistentvolumeclaim/object-data   waiting for first consumer to be created before binding
+45m         Normal   Provisioning            persistentvolumeclaim/object-data   External provisioner is provisioning volume for claim "bd-g01/object-data"
+45m         Normal   ExternalProvisioning    persistentvolumeclaim/object-data   Waiting for a volume to be created either by the external provisioner 'rancher.io/local-path' or manually by the system administrator. If volume creation is delayed, please verify that the provisioner is running and correctly registered.
+45m         Normal   ProvisioningSucceeded   persistentvolumeclaim/object-data   Successfully provisioned volume pvc-fa79cc71-194b-4483-a8bf-ecd44ded0499
+45m         Normal   Pulling                 pod/objects-69888b7969-cqk8z        Pulling image "chrislusf/seaweedfs@sha256:d7f3fdf6fb9c9375551e95bc985abae74a157789d868341e9e84a999ed8ea21c"
+44m         Normal   Pulled                  pod/objects-69888b7969-cqk8z        Successfully pulled image "chrislusf/seaweedfs@sha256:d7f3fdf6fb9c9375551e95bc985abae74a157789d868341e9e84a999ed8ea21c" in 12.363s (12.363s including waiting). Image size: 106946901 bytes.
+44m         Normal   Created                 pod/objects-69888b7969-cqk8z        Container created
+44m         Normal   Started                 pod/objects-69888b7969-cqk8z        Container started
+44m         Normal   Pulled                  pod/ingestor                        Container image "trunglizabeth/s3lab@sha256:b9e7cf4d42d76b3c6e238ba4c4163bab5324ade9160ca4b5cd826d6bdcfabe93" already present on machine and can be accessed by the pod
+44m         Normal   Pulled                  pod/owner                           Container image "trunglizabeth/s3lab@sha256:b9e7cf4d42d76b3c6e238ba4c4163bab5324ade9160ca4b5cd826d6bdcfabe93" already present on machine and can be accessed by the pod
+44m         Normal   Started                 pod/owner                           Container started
+44m         Normal   Created                 pod/owner                           Container created
+44m         Normal   Pulled                  pod/blocked                         Container image "trunglizabeth/s3lab@sha256:b9e7cf4d42d76b3c6e238ba4c4163bab5324ade9160ca4b5cd826d6bdcfabe93" already present on machine and can be accessed by the pod
+44m         Normal   Started                 pod/ingestor                        Container started
+44m         Normal   Created                 pod/ingestor                        Container created
+44m         Normal   Started                 pod/blocked                         Container started
+44m         Normal   Created                 pod/blocked                         Container created
+44m         Normal   Started                 pod/analyst                         Container started
+44m         Normal   Created                 pod/analyst                         Container created
+44m         Normal   Pulled                  pod/analyst                         Container image "trunglizabeth/s3lab@sha256:b9e7cf4d42d76b3c6e238ba4c4163bab5324ade9160ca4b5cd826d6bdcfabe93" already present on machine and can be accessed by the pod
+4m26s       Normal   SuccessfulCreate        replicaset/objects-69888b7969       Created pod: objects-69888b7969-zd4bz
+4m26s       Normal   Killing                 pod/objects-69888b7969-cqk8z        Stopping container store
+4m26s       Normal   Created                 pod/objects-69888b7969-zd4bz        Container created
+4m26s       Normal   Pulled                  pod/objects-69888b7969-zd4bz        Container image "chrislusf/seaweedfs@sha256:d7f3fdf6fb9c9375551e95bc985abae74a157789d868341e9e84a999ed8ea21c" already present on machine and can be accessed by the pod
+4m25s       Normal   Started                 pod/objects-69888b7969-zd4bz        Container started

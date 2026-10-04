@@ -1,0 +1,5 @@
+analyst	6b95510b-e3fc-4cfc-b2a3-a567dce1a641	docker.io/trunglizabeth/s3lab@sha256:b9e7cf4d42d76b3c6e238ba4c4163bab5324ade9160ca4b5cd826d6bdcfabe93
+blocked	1e161c41-363e-4b80-b482-745a178ee665	docker.io/trunglizabeth/s3lab@sha256:b9e7cf4d42d76b3c6e238ba4c4163bab5324ade9160ca4b5cd826d6bdcfabe93
+ingestor	c4e7caf3-9b38-42ea-a7b3-5a12e6ce8555	docker.io/trunglizabeth/s3lab@sha256:b9e7cf4d42d76b3c6e238ba4c4163bab5324ade9160ca4b5cd826d6bdcfabe93
+objects-69888b7969-zd4bz	88abb925-89d1-429e-8922-30abe2ab7ef6	docker.io/chrislusf/seaweedfs@sha256:d7f3fdf6fb9c9375551e95bc985abae74a157789d868341e9e84a999ed8ea21c
+owner	93127928-eda1-4a51-8847-073ec89d3612	docker.io/trunglizabeth/s3lab@sha256:b9e7cf4d42d76b3c6e238ba4c4163bab5324ade9160ca4b5cd826d6bdcfabe93

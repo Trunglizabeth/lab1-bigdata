@@ -1,0 +1,168 @@
+I1004 15:28:41.357929 mini.go:644 Loaded 2 options from configuration file /data/mini.options
+I1004 15:28:41.379701 mini.go:527 Final port configuration - Master: 9333, Filer: 8888, Volume: 9340, S3: 8333, Iceberg: 8181, WebDAV: 7333, Admin: 23646
+I1004 15:28:41.379737 mini.go:532 gRPC port configuration - Master: 19333, Filer: 18888, Volume: 19340, S3: 18333, Admin: 33646
+I1004 15:28:41.379745 master.go:332 current: 10.42.0.17:9333 peers:none
+I1004 15:28:41.379753 master.go:337 Running in single-master mode (peers=none), no quorum required
+I1004 15:28:41.379866 file_util.go:28 Folder /data Permission: -rwxrwxrwx
+I1004 15:28:41.379903 mini.go:339 Optimal volume size: 1024MB (total disk capacity: 1031018MB, capacity/100 before rounding: 10310MB, rounded to nearest power of 2, clamped to [64,1024]MB)
+I1004 15:28:41.379954 mini.go:818 Mini started with auto-calculated optimal volume size limit: 1024MB
+I1004 15:28:41.380141 mini.go:908 Master service starting...
+I1004 15:28:41.380460 master.go:332 current: 10.42.0.17:9333 peers:none
+I1004 15:28:41.380479 master.go:337 Running in single-master mode (peers=none), no quorum required
+I1004 15:28:41.380721 master_server.go:146 Volume Size Limit is 1024 MB
+I1004 15:28:41.381042 master.go:192 Start Seaweed Master 30GB 4.12 2d9768539 at 10.42.0.17:9333
+I1004 15:28:41.383118 raft_server.go:133 Starting RaftServer with 10.42.0.17:9333
+I1004 15:28:41.398584 raft_server.go:182 current cluster leader: 
+I1004 15:28:41.398624 master.go:227 Single-master mode: initializing cluster immediately
+I1004 15:28:41.398639 raft_server.go:204 Initializing new cluster
+I1004 15:28:41.408121 master_server.go:228 [10.42.0.17:9333.19333] I am the leader!
+I1004 15:28:41.408858 master.go:251 Start Seaweed Master 30GB 4.12 2d9768539 grpc server at 10.42.0.17:19333
+I1004 15:28:41.409002 masterclient.go:385 .master masterClient bootstraps with masters {[10.42.0.17:9333.19333] <nil>}
+I1004 15:28:41.411236 masterclient.go:179 .master masterClient gRPC stream established to 10.42.0.17:9333 in 2.172708ms
+I1004 15:28:41.412149 master_grpc_server.go:404 + client .master@10.42.0.17:9333.19333
+I1004 15:28:41.412478 masterclient.go:269 updateVidMap ignore short heartbeat: volume_location:{leader:"10.42.0.17:9333.19333"}
+I1004 15:28:41.412630 masterclient.go:244 + master@10.42.0.17:9333 noticed .master 10.42.0.17:9333.19333
+I1004 15:28:41.584220 mini.go:926 Master service is ready at http://10.42.0.17:9333
+I1004 15:28:41.584340 mini.go:908 Volume service starting...
+I1004 15:28:41.584402 file_util.go:28 Folder /data Permission: -rwxrwxrwx
+I1004 15:28:41.595142 volume_grpc_client_to_master.go:53 Volume server start with seed master nodes: [10.42.0.17:9333]
+I1004 15:28:41.595250 volume.go:412 Start Seaweed volume server 30GB 4.12 2d9768539 at 10.42.0.17:9340
+I1004 15:28:41.595679 volume_grpc_client_to_master.go:130 Heartbeat to: 10.42.0.17:9333
+I1004 15:28:41.596340 node.go:427 topo adds child DefaultDataCenter
+I1004 15:28:41.596385 node.go:427 topo:DefaultDataCenter adds child DefaultRack
+I1004 15:28:41.596391 node.go:427 topo:DefaultDataCenter:DefaultRack adds child 10.42.0.17:9340
+I1004 15:28:41.596398 node.go:427 topo:DefaultDataCenter:DefaultRack:10.42.0.17:9340 adds child 
+I1004 15:28:41.596403 master_grpc_server.go:141 added volume server 0: 10.42.0.17:9340 (id=10.42.0.17:9340, ip=10.42.0.17:9340) [d2139c11-1492-43da-be3c-5adf7100e7f9]
+I1004 15:28:41.596458 master_grpc_server.go:51 found new uuid:10.42.0.17:9340 [d2139c11-1492-43da-be3c-5adf7100e7f9] , map[10.42.0.17:9340:[d2139c11-1492-43da-be3c-5adf7100e7f9]]
+I1004 15:28:41.786031 mini.go:926 Volume service is ready at http://10.42.0.17:9340
+I1004 15:28:41.786173 mini.go:908 Filer service starting...
+I1004 15:28:41.788113 filer.go:341 Initialized credential manager: filer_etc
+W1004 15:28:41.801682 filer_server.go:174 skipping default store dir in /data/filerldb2
+I1004 15:28:41.802544 filer_server.go:180 max_file_name_length 255
+I1004 15:28:41.811689 masterclient.go:385 .filer masterClient bootstraps with masters {[10.42.0.17:9333.19333] <nil>}
+I1004 15:28:41.812377 leveldb2_store.go:43 filer store leveldb2 dir: /data/filerldb2
+I1004 15:28:41.812447 file_util.go:28 Folder /data/filerldb2 Permission: -rwxr-xr-x
+I1004 15:28:41.812527 masterclient.go:179 .filer masterClient gRPC stream established to 10.42.0.17:9333 in 771.923µs
+I1004 15:28:41.812733 master_grpc_server.go:404 + client .filer@10.42.0.17:8888.18888
+I1004 15:28:41.813063 masterclient.go:244 + master@10.42.0.17:9333 noticed .filer 10.42.0.17:8888.18888
+I1004 15:28:44.395140 filer.go:170 existing filer.store.id = -561439820
+I1004 15:28:44.395251 configuration.go:29 configured filer store to leveldb2
+I1004 15:28:44.395458 filer_server_tus_session.go:400 TUS session cleanup started with interval 1h0m0s
+I1004 15:28:44.396258 master_client.go:23 the cluster has 1 filer
+I1004 15:28:44.396344 filer.go:121 10.42.0.17:8888 aggregate from peers [10.42.0.17:8888]
+I1004 15:28:44.400479 filer.go:393 Start Seaweed Filer 30GB 4.12 2d9768539 at 10.42.0.17:8888
+I1004 15:28:44.400470 meta_aggregator.go:80 loopSubscribeToOneFiler read 10.42.0.17:8888 start from 2026-10-04 15:27:44.396283138 +0000 UTC 1791127664396283138
+I1004 15:28:44.400998 filer.go:415 Registered IAM gRPC service on filer
+I1004 15:28:44.401909 meta_aggregator.go:185 subscribing remote 10.42.0.17:8888 meta change: 2026-10-04 15:27:44.396283138 +0000 UTC, clientId:1666611573
+I1004 15:28:44.402888 filer_grpc_server_sub_meta.go:411 + local listener filer:10.42.0.17:8888.18888@10.42.0.17:49730 clientId -1666611573 clientEpoch 1
+I1004 15:28:44.402937 filer_grpc_server_sub_meta.go:163  + filer:10.42.0.17:8888.18888@10.42.0.17:49730 local subscribe / from {Time:2026-10-04 15:27:44.396283138 +0000 UTC Offset:-2 IsOffsetBased:false} clientId:-1666611573
+I1004 15:28:44.413459 mini.go:926 Filer service is ready at http://10.42.0.17:8888
+I1004 15:28:44.413581 mini.go:908 S3 service starting...
+I1004 15:28:44.413606 mini.go:908 WebDAV service starting...
+I1004 15:28:44.413586 filer_server_handlers_read_dir.go:106 request_id:8dc9acf3-7043-4a59-ac5f-0e494d7eba3e Template Execute Error: write tcp 10.42.0.17:8888->10.42.0.17:60516: write: broken pipe
+I1004 15:28:44.414121 s3.go:250 S3 read filer buckets dir: /buckets
+I1004 15:28:44.414141 s3.go:252 S3 read master addresses for discovery: [10.42.0.17:9333]
+I1004 15:28:44.414144 webdav.go:109 connected to filer 10.42.0.17:8888.18888 grpc address 10.42.0.17:18888
+I1004 15:28:44.414180 s3.go:260 connected to filers [10.42.0.17:8888]
+I1004 15:28:44.414188 s3.go:281 Starting S3 API Server with standard IAM
+I1004 15:28:44.416211 auth_credentials.go:591 Loaded 3 identities, 2 accounts, 3 access keys. Auth enabled: true
+I1004 15:28:44.417854 filer_client.go:176 FilerClient: started filer discovery for group '' (refresh interval: 5m0s)
+I1004 15:28:44.417902 masterclient.go:385 .s3 masterClient bootstraps with masters {[10.42.0.17:9333.19333] <nil>}
+I1004 15:28:44.418414 masterclient.go:179 .s3 masterClient gRPC stream established to 10.42.0.17:9333 in 488.806µs
+I1004 15:28:44.418596 master_grpc_server.go:404 + client .s3@10.42.0.17:18333
+I1004 15:28:44.418763 masterclient.go:244 + master@10.42.0.17:9333 noticed .s3 10.42.0.17:18333
+I1004 15:28:44.418950 masterclient.go:244 + filer@10.42.0.17:8888 noticed .s3 10.42.0.17:18333
+I1004 15:28:44.423122 filer_grpc_server_sub_meta.go:411 +  listener s3@10.42.0.17:49734 clientId 1865339434 clientEpoch 2
+I1004 15:28:44.423157 filer_grpc_server_sub_meta.go:45  s3@10.42.0.17:49734 starts to subscribe /etc/ from {Time:2026-10-04 15:28:44.414211543 +0000 UTC Offset:-2 IsOffsetBased:false}
+I1004 15:28:44.423486 s3.go:451 Start Seaweed S3 API Server 30GB 4.12 2d9768539 at http port 8333
+I1004 15:28:44.448188 s3.go:491 Start Iceberg REST Catalog Server at http://10.42.0.17:8181
+I1004 15:28:44.465228 needle_map_leveldb.go:122 generateLevelDbFile /tmp/ce1aee87/c0_2_0.ldb, watermark 0, num of entries:0
+I1004 15:28:44.528012 needle_map_leveldb.go:66 Loading /tmp/ce1aee87/c0_2_0.ldb... , watermark: 0
+I1004 15:28:44.592371 master_client.go:23 the cluster has 1 filer
+I1004 15:28:44.615563 mini.go:926 S3 service is ready at http://10.42.0.17:8333
+I1004 15:28:44.616344 mini.go:926 Iceberg service is ready at http://10.42.0.17:8181
+I1004 15:28:44.620120 needle_map_leveldb.go:122 generateLevelDbFile /tmp/ce1aee87/c0_2_1.ldb, watermark 0, num of entries:0
+I1004 15:28:44.671246 needle_map_leveldb.go:66 Loading /tmp/ce1aee87/c0_2_1.ldb... , watermark: 0
+I1004 15:28:44.694689 needle_map_leveldb.go:122 generateLevelDbFile /tmp/ce1aee87/c1_3_0.ldb, watermark 0, num of entries:0
+I1004 15:28:44.730251 needle_map_leveldb.go:66 Loading /tmp/ce1aee87/c1_3_0.ldb... , watermark: 0
+I1004 15:28:44.769284 needle_map_leveldb.go:122 generateLevelDbFile /tmp/ce1aee87/c1_3_1.ldb, watermark 0, num of entries:0
+I1004 15:28:44.794957 needle_map_leveldb.go:66 Loading /tmp/ce1aee87/c1_3_1.ldb... , watermark: 0
+I1004 15:28:44.850096 needle_map_leveldb.go:122 generateLevelDbFile /tmp/ce1aee87/c1_3_2.ldb, watermark 0, num of entries:0
+I1004 15:28:44.881225 needle_map_leveldb.go:66 Loading /tmp/ce1aee87/c1_3_2.ldb... , watermark: 0
+I1004 15:28:44.907568 needle_map_leveldb.go:122 generateLevelDbFile /tmp/ce1aee87/c2_2_0.ldb, watermark 0, num of entries:0
+I1004 15:28:44.929921 needle_map_leveldb.go:66 Loading /tmp/ce1aee87/c2_2_0.ldb... , watermark: 0
+I1004 15:28:44.953763 needle_map_leveldb.go:122 generateLevelDbFile /tmp/ce1aee87/c2_2_1.ldb, watermark 0, num of entries:0
+I1004 15:28:44.974200 needle_map_leveldb.go:66 Loading /tmp/ce1aee87/c2_2_1.ldb... , watermark: 0
+I1004 15:28:44.974531 webdav.go:153 Start Seaweed WebDav Server 30GB 4.12 2d9768539 at http 10.42.0.17:7333
+I1004 15:28:45.019866 mini.go:926 WebDAV service is ready at http://10.42.0.17:7333
+Data directory created/verified: /data/admin
+2026/10/04 15:28:45 Loaded persisted session key from /data/admin/.session_key
+I1004 15:28:45.022128 config_loader.go:109 Using explicit credential store: grpc
+I1004 15:28:45.022186 admin_server.go:163 Credential manager initialized with store type: grpc
+I1004 15:28:45.022229 masterclient.go:385 .admin masterClient bootstraps with masters {[10.42.0.17:9333.19333] <nil>}
+I1004 15:28:45.022370 admin_server.go:176 Credential store configured with dynamic filer address function
+I1004 15:28:45.022798 maintenance_queue.go:45 Loading tasks from persistence...
+I1004 15:28:45.022866 maintenance_queue.go:52 DEBUG LoadTasksFromPersistence: Found 0 tasks in persistence
+I1004 15:28:45.022900 maintenance_queue.go:108 Loaded 0 tasks from persistence (0 pending)
+I1004 15:28:45.023257 masterclient.go:179 .admin masterClient gRPC stream established to 10.42.0.17:9333 in 989.365µs
+I1004 15:28:45.023423 master_grpc_server.go:404 + client .admin@f823da3f-bb07-4556-8246-63c9226834d4
+Discovered filers: 10.42.0.17:8888.18888
+2026/10/04 15:28:45 Starting SeaweedFS Admin Server on port 23646
+I1004 15:28:45.521830 mini.go:1040 Admin server is ready at http://10.42.0.17:23646
+I1004 15:28:45.521948 mini.go:1080 Starting maintenance worker for admin server
+I1004 15:28:45.521983 mini.go:1091 Worker connecting to admin server: 10.42.0.17:23646
+I1004 15:28:45.522010 mini.go:1092 Worker capabilities: vacuum,ec,balance
+I1004 15:28:45.522034 mini.go:1093 Worker directory: /data/worker
+I1004 15:28:45.524525 worker.go:109 Loaded existing worker ID from /data/worker/worker.id: w-object-b33e
+I1004 15:28:45.524646 worker.go:431 Worker w-object-b33e handleStart called
+I1004 15:28:45.524663 worker.go:462 WORKER STARTING: Worker w-object-b33e starting with capabilities [vacuum erasure_coding balance], max concurrent: 2
+I1004 15:28:45.524907 client.go:264 [session 70e7] Connected to admin server at 10.42.0.17:33646
+I1004 15:28:45.525673 client.go:282 [session 70e7] Worker stream created
+I1004 15:28:45.526932 worker_grpc_server.go:173 Worker w-object-b33e connecting from 10.42.0.17:53124
+I1004 15:28:45.526990 maintenance_queue.go:525 Worker registered: w-object-b33e at 10.42.0.17:53124 (capabilities: [vacuum erasure_coding balance], max concurrent: 2)
+I1004 15:28:45.527306 client.go:695 Worker registered successfully: Worker registered successfully
+I1004 15:28:45.527345 client.go:310 [session 70e7] Worker w-object-b33e registered successfully with admin server
+I1004 15:28:45.527357 worker.go:470 INITIAL CONNECTION SUCCESS: Worker w-object-b33e successfully connected to admin server
+I1004 15:28:45.527367 worker.go:481 WORKER STARTED: Worker w-object-b33e started successfully (connection attempts will continue in background)
+I1004 15:28:45.527383 worker.go:910 MESSAGE LOOP STARTED: Worker w-object-b33e message processing loop started
+I1004 15:28:45.527384 mini.go:1155 Maintenance worker w-object-b33e started successfully
+╔═══════════════════════════════════════════════════════════════════════════════╗
+║                      SeaweedFS Mini - All-in-One Mode                         ║
+╚═══════════════════════════════════════════════════════════════════════════════╝
+
+  All enabled components are running and ready to use:
+
+    Master UI:       http://10.42.0.17:9333
+    Filer UI:        http://10.42.0.17:8888
+    S3 Endpoint:     http://10.42.0.17:8333
+    Iceberg Catalog: http://10.42.0.17:8181
+    WebDAV:          http://10.42.0.17:7333
+    Admin UI:        http://10.42.0.17:23646
+    Volume Server:   http://10.42.0.17:9340
+
+  Optimized Settings:
+    • Volume size limit: 1024MB
+    • Volume max: auto (based on free disk space)
+    • Pre-stop seconds: 1 (faster shutdown)
+    • Master peers: none (single master mode)
+    • Admin UI for management and maintenance tasks
+
+  Data Directory: /data
+
+  Press Ctrl+C to stop all components
+  To create S3 credentials, you have two options:
+
+  Option 1: Use environment variables (recommended for quick setup)
+    export AWS_ACCESS_KEY_ID=REDACTED
+    export AWS_SECRET_ACCESS_KEY=REDACTED
+    weed mini -dir=/data
+    This will create initial credentials for the 'mini' user.
+
+  Option 2: Use the Admin UI
+    Open: http://10.42.0.17:23646
+    Add a new identity to create S3 credentials.
+
+I1004 15:28:45.527637 mini.go:712 Mini configuration saved to /data/mini.options
+I1004 15:28:47.024253 maintenance_manager.go:142 Maintenance manager started with scan interval 1800s
+I1004 15:29:15.525203 worker.go:864 CONNECTION RESTORED: Worker w-object-b33e connection status changed: connected
+I1004 15:29:24.422596 lock_client.go:107 Lock owner changed from  to 10.42.0.17:8888.18888-s3-metrics
