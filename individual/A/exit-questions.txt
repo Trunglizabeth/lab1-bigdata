@@ -1,0 +1,30 @@
+Câu 1 (4 điểm)
+
+Quyền observer và quyền đọc S3 thuộc hai lớp kiểm soát độc lập, bảo vệ hai loại tài sản khác nhau. Quyền observer do Kubernetes RBAC cấp và chỉ cho phép xem trạng thái workload (Pod, log, event). Quyền S3 do SeaweedFS cấp theo identity khai báo trong s3.json, với các action giới hạn theo từng bucket (policies-redacted.json). Lab không dùng IAM. Tách hai lớp này theo nguyên tắc least privilege: người cần theo dõi hệ thống không cần, và không nên có, khả năng đọc dữ liệu.
+
+Bằng chứng của nhóm cho thấy hai lớp thực sự độc lập. Observer xem được log Pod (K03) nhưng bị Forbidden khi đọc Secret s3-config (K04), nên không lấy được key S3 nào. Ở lớp dữ liệu, analyst bị 403 khi đọc research-raw (S10), tức SeaweedFS chặn truy cập ngoài phạm vi bucket được cấp, bất kể quyền Kubernetes.
+
+Namespace operator nằm ngoài ranh giới cô lập vì key S3 không gắn với danh tính của Pod. ServiceAccount không cung cấp workload identity, còn key nằm trong Secret s3-<role> và được đưa vào Pod qua envFrom. Ai có quyền ghi trong namespace đều có thể dùng key đó. Cụ thể trong lab, operator có thể:
+
+tạo một Pod mount Secret s3-owner và nhận toàn bộ quyền của owner;
+exec vào Pod owner đang chạy để đọc biến môi trường chứa key;
+tự gắn label access: s3 cho Pod mới để đi qua NetworkPolicy, vì label chỉ là selector, không phải bằng chứng danh tính.
+
+Vì operator có thể khiến workload hành động thay mình, cơ chế tách quyền không bảo vệ được trước họ. Do đó ranh giới cô lập phải được tuyên bố là không bao gồm namespace operator.
+
+Câu 2 (3 điểm)
+
+Ở concurrency 4, hệ thống chậm hơn concurrency 1. Median goodput c4/c1 chỉ đạt 0,82× với PUT và 0,84× với GET. p95 latency của PUT tăng từ khoảng 40 ms lên 270–315 ms. Thông lượng giảm trong khi latency tăng là mô hình điển hình của việc request xếp hàng tại một điểm nghẽn đã bão hòa: thêm luồng không tạo thêm năng lực xử lý mà chỉ tăng thời gian chờ và chi phí tranh chấp.
+
+Điểm nghẽn hợp lý nhất là giới hạn CPU. Theo task4-throttle-diag.txt, trong lần chạy c4, ingestor có thêm 25 chu kỳ bị CFS throttle (limit 500m). Storage có thêm 10 chu kỳ (limit 1 CPU), trong khi mọi thành phần SeaweedFS chạy chung một process và phải chia nhau 1 CPU đó. Phía client cũng có thể là điểm nghẽn. Client là một process Python 4 luồng chạy chung GIL và tự tính SHA-256, một tác vụ nặng CPU, nên 4 luồng không thực sự chạy song song ở phần tính hash.
+
+Giới hạn của kết luận: số chu kỳ throttle tăng là bằng chứng ủng hộ giả thuyết nghẽn CPU, nhưng chưa chứng minh quan hệ nhân quả. Để khẳng định cần thí nghiệm đối chứng, ví dụ nâng CPU limit hoặc tách tính hash ra nhiều process rồi đo lại.
+
+Câu 3 (3 điểm)
+
+Lab chứng minh dữ liệu sống sót khi thay Pod. Sau khi xóa và tạo lại Pod storage, 32/32 object vẫn khớp hash, vì dữ liệu nằm trên PVC (/data) chứ không nằm trong filesystem của container. Tuy vậy, điều này không chứng minh backup, HA hay enforced retention.
+
+Không phải backup: dữ liệu còn vì Pod mới gắn lại đúng PVC cũ trên cùng node (local-path, UID fa79cc71… giữ nguyên). Chỉ có một bản dữ liệu duy nhất, nên nếu node hoặc ổ đĩa hỏng thì không có bản sao nào để khôi phục. Backup cần thêm một bản sao độc lập trên node hoặc hệ thống khác, tốt nhất có versioning.
+Không phải HA: với một replica, việc phục hồi xảy ra sau sự cố. Canary ghi nhận gián đoạn 5,0 giây (5 lần đọc lỗi), và Pod mới chỉ sẵn sàng sau 19 giây. HA cần thêm nhiều replica phân tán qua các failure domain (node, zone) để dịch vụ không bị gián đoạn.
+Chưa test crash-consistency: thí nghiệm là xóa Pod graceful, không phải mất điện hay crash đột ngột, nên chưa biết dữ liệu đang ghi dở có còn nhất quán hay không.
+Không phải enforced retention: governance.json ghi "retention_enforced": false. Không có cơ chế nào tự giữ hoặc tự xóa dữ liệu theo thời hạn, và người có quyền vẫn xóa được object bất kỳ lúc nào. Muốn có enforced retention cần thêm cơ chế như versioning, Object Lock hoặc lifecycle rule.
