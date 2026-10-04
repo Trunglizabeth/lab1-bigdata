@@ -1,0 +1,6 @@
+== before diag-c4
+ingestor nr_throttled 119 throttled_usec 4888894 
+deploy/objects nr_throttled 38 throttled_usec 7056237 
+== after diag-c4
+ingestor nr_throttled 144 throttled_usec 5569681 
+deploy/objects nr_throttled 48 throttled_usec 8766776 

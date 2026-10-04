@@ -1,0 +1,322 @@
+===== 2026-10-04T15:17:12+00:00 =====
+NAME                       CPU(cores)   MEMORY(bytes)   
+analyst                    0m           2Mi             
+blocked                    0m           0Mi             
+ingestor                   0m           2Mi             
+objects-69888b7969-cqk8z   3m           38Mi            
+owner                      0m           4Mi             
+NAME                       READY   STATUS    RESTARTS   AGE   IP           NODE                   NOMINATED NODE   READINESS GATES
+analyst                    1/1     Running   0          28m   10.42.0.14   k3d-bigdata-server-0   <none>           <none>
+blocked                    1/1     Running   0          28m   10.42.0.15   k3d-bigdata-server-0   <none>           <none>
+ingestor                   1/1     Running   0          28m   10.42.0.13   k3d-bigdata-server-0   <none>           <none>
+objects-69888b7969-cqk8z   1/1     Running   0          29m   10.42.0.11   k3d-bigdata-server-0   <none>           <none>
+owner                      1/1     Running   0          28m   10.42.0.12   k3d-bigdata-server-0   <none>           <none>
+
+===== 2026-10-04T15:17:17+00:00 =====
+NAME                       CPU(cores)   MEMORY(bytes)   
+analyst                    0m           2Mi             
+blocked                    0m           0Mi             
+ingestor                   0m           2Mi             
+objects-69888b7969-cqk8z   3m           38Mi            
+owner                      0m           4Mi             
+NAME                       READY   STATUS    RESTARTS   AGE   IP           NODE                   NOMINATED NODE   READINESS GATES
+analyst                    1/1     Running   0          28m   10.42.0.14   k3d-bigdata-server-0   <none>           <none>
+blocked                    1/1     Running   0          28m   10.42.0.15   k3d-bigdata-server-0   <none>           <none>
+ingestor                   1/1     Running   0          28m   10.42.0.13   k3d-bigdata-server-0   <none>           <none>
+objects-69888b7969-cqk8z   1/1     Running   0          29m   10.42.0.11   k3d-bigdata-server-0   <none>           <none>
+owner                      1/1     Running   0          28m   10.42.0.12   k3d-bigdata-server-0   <none>           <none>
+
+===== 2026-10-04T15:17:23+00:00 =====
+NAME                       CPU(cores)   MEMORY(bytes)   
+analyst                    0m           2Mi             
+blocked                    0m           0Mi             
+ingestor                   0m           2Mi             
+objects-69888b7969-cqk8z   3m           38Mi            
+owner                      0m           4Mi             
+NAME                       READY   STATUS    RESTARTS   AGE   IP           NODE                   NOMINATED NODE   READINESS GATES
+analyst                    1/1     Running   0          28m   10.42.0.14   k3d-bigdata-server-0   <none>           <none>
+blocked                    1/1     Running   0          28m   10.42.0.15   k3d-bigdata-server-0   <none>           <none>
+ingestor                   1/1     Running   0          28m   10.42.0.13   k3d-bigdata-server-0   <none>           <none>
+objects-69888b7969-cqk8z   1/1     Running   0          29m   10.42.0.11   k3d-bigdata-server-0   <none>           <none>
+owner                      1/1     Running   0          28m   10.42.0.12   k3d-bigdata-server-0   <none>           <none>
+
+===== 2026-10-04T15:17:28+00:00 =====
+NAME                       CPU(cores)   MEMORY(bytes)   
+analyst                    0m           2Mi             
+blocked                    0m           0Mi             
+ingestor                   0m           2Mi             
+objects-69888b7969-cqk8z   3m           38Mi            
+owner                      0m           4Mi             
+NAME                       READY   STATUS    RESTARTS   AGE   IP           NODE                   NOMINATED NODE   READINESS GATES
+analyst                    1/1     Running   0          28m   10.42.0.14   k3d-bigdata-server-0   <none>           <none>
+blocked                    1/1     Running   0          28m   10.42.0.15   k3d-bigdata-server-0   <none>           <none>
+ingestor                   1/1     Running   0          28m   10.42.0.13   k3d-bigdata-server-0   <none>           <none>
+objects-69888b7969-cqk8z   1/1     Running   0          29m   10.42.0.11   k3d-bigdata-server-0   <none>           <none>
+owner                      1/1     Running   0          28m   10.42.0.12   k3d-bigdata-server-0   <none>           <none>
+
+===== 2026-10-04T15:17:33+00:00 =====
+NAME                       CPU(cores)   MEMORY(bytes)   
+analyst                    0m           2Mi             
+blocked                    0m           0Mi             
+ingestor                   0m           2Mi             
+objects-69888b7969-cqk8z   3m           37Mi            
+owner                      0m           4Mi             
+NAME                       READY   STATUS    RESTARTS   AGE   IP           NODE                   NOMINATED NODE   READINESS GATES
+analyst                    1/1     Running   0          29m   10.42.0.14   k3d-bigdata-server-0   <none>           <none>
+blocked                    1/1     Running   0          29m   10.42.0.15   k3d-bigdata-server-0   <none>           <none>
+ingestor                   1/1     Running   0          29m   10.42.0.13   k3d-bigdata-server-0   <none>           <none>
+objects-69888b7969-cqk8z   1/1     Running   0          29m   10.42.0.11   k3d-bigdata-server-0   <none>           <none>
+owner                      1/1     Running   0          29m   10.42.0.12   k3d-bigdata-server-0   <none>           <none>
+
+===== 2026-10-04T15:17:39+00:00 =====
+NAME                       CPU(cores)   MEMORY(bytes)   
+analyst                    0m           2Mi             
+blocked                    0m           0Mi             
+ingestor                   0m           2Mi             
+objects-69888b7969-cqk8z   3m           37Mi            
+owner                      0m           4Mi             
+NAME                       READY   STATUS    RESTARTS   AGE   IP           NODE                   NOMINATED NODE   READINESS GATES
+analyst                    1/1     Running   0          29m   10.42.0.14   k3d-bigdata-server-0   <none>           <none>
+blocked                    1/1     Running   0          29m   10.42.0.15   k3d-bigdata-server-0   <none>           <none>
+ingestor                   1/1     Running   0          29m   10.42.0.13   k3d-bigdata-server-0   <none>           <none>
+objects-69888b7969-cqk8z   1/1     Running   0          29m   10.42.0.11   k3d-bigdata-server-0   <none>           <none>
+owner                      1/1     Running   0          29m   10.42.0.12   k3d-bigdata-server-0   <none>           <none>
+
+===== 2026-10-04T15:17:44+00:00 =====
+NAME                       CPU(cores)   MEMORY(bytes)   
+analyst                    0m           2Mi             
+blocked                    0m           0Mi             
+ingestor                   0m           2Mi             
+objects-69888b7969-cqk8z   3m           37Mi            
+owner                      0m           4Mi             
+NAME                       READY   STATUS    RESTARTS   AGE   IP           NODE                   NOMINATED NODE   READINESS GATES
+analyst                    1/1     Running   0          29m   10.42.0.14   k3d-bigdata-server-0   <none>           <none>
+blocked                    1/1     Running   0          29m   10.42.0.15   k3d-bigdata-server-0   <none>           <none>
+ingestor                   1/1     Running   0          29m   10.42.0.13   k3d-bigdata-server-0   <none>           <none>
+objects-69888b7969-cqk8z   1/1     Running   0          29m   10.42.0.11   k3d-bigdata-server-0   <none>           <none>
+owner                      1/1     Running   0          29m   10.42.0.12   k3d-bigdata-server-0   <none>           <none>
+
+===== 2026-10-04T15:17:50+00:00 =====
+NAME                       CPU(cores)   MEMORY(bytes)   
+analyst                    0m           2Mi             
+blocked                    0m           0Mi             
+ingestor                   9m           5Mi             
+objects-69888b7969-cqk8z   3m           37Mi            
+owner                      0m           4Mi             
+NAME                       READY   STATUS    RESTARTS   AGE   IP           NODE                   NOMINATED NODE   READINESS GATES
+analyst                    1/1     Running   0          29m   10.42.0.14   k3d-bigdata-server-0   <none>           <none>
+blocked                    1/1     Running   0          29m   10.42.0.15   k3d-bigdata-server-0   <none>           <none>
+ingestor                   1/1     Running   0          29m   10.42.0.13   k3d-bigdata-server-0   <none>           <none>
+objects-69888b7969-cqk8z   1/1     Running   0          30m   10.42.0.11   k3d-bigdata-server-0   <none>           <none>
+owner                      1/1     Running   0          29m   10.42.0.12   k3d-bigdata-server-0   <none>           <none>
+
+===== 2026-10-04T15:17:55+00:00 =====
+NAME                       CPU(cores)   MEMORY(bytes)   
+analyst                    0m           2Mi             
+blocked                    0m           0Mi             
+ingestor                   9m           5Mi             
+objects-69888b7969-cqk8z   3m           37Mi            
+owner                      0m           4Mi             
+NAME                       READY   STATUS    RESTARTS   AGE   IP           NODE                   NOMINATED NODE   READINESS GATES
+analyst                    1/1     Running   0          29m   10.42.0.14   k3d-bigdata-server-0   <none>           <none>
+blocked                    1/1     Running   0          29m   10.42.0.15   k3d-bigdata-server-0   <none>           <none>
+ingestor                   1/1     Running   0          29m   10.42.0.13   k3d-bigdata-server-0   <none>           <none>
+objects-69888b7969-cqk8z   1/1     Running   0          30m   10.42.0.11   k3d-bigdata-server-0   <none>           <none>
+owner                      1/1     Running   0          29m   10.42.0.12   k3d-bigdata-server-0   <none>           <none>
+
+===== 2026-10-04T15:18:00+00:00 =====
+NAME                       CPU(cores)   MEMORY(bytes)   
+analyst                    0m           2Mi             
+blocked                    0m           0Mi             
+ingestor                   9m           5Mi             
+objects-69888b7969-cqk8z   3m           37Mi            
+owner                      0m           4Mi             
+NAME                       READY   STATUS    RESTARTS   AGE   IP           NODE                   NOMINATED NODE   READINESS GATES
+analyst                    1/1     Running   0          29m   10.42.0.14   k3d-bigdata-server-0   <none>           <none>
+blocked                    1/1     Running   0          29m   10.42.0.15   k3d-bigdata-server-0   <none>           <none>
+ingestor                   1/1     Running   0          29m   10.42.0.13   k3d-bigdata-server-0   <none>           <none>
+objects-69888b7969-cqk8z   1/1     Running   0          30m   10.42.0.11   k3d-bigdata-server-0   <none>           <none>
+owner                      1/1     Running   0          29m   10.42.0.12   k3d-bigdata-server-0   <none>           <none>
+
+===== 2026-10-04T15:18:06+00:00 =====
+NAME                       CPU(cores)   MEMORY(bytes)   
+analyst                    0m           2Mi             
+blocked                    0m           0Mi             
+ingestor                   353m         211Mi           
+objects-69888b7969-cqk8z   335m         338Mi           
+owner                      0m           4Mi             
+NAME                       READY   STATUS    RESTARTS   AGE   IP           NODE                   NOMINATED NODE   READINESS GATES
+analyst                    1/1     Running   0          29m   10.42.0.14   k3d-bigdata-server-0   <none>           <none>
+blocked                    1/1     Running   0          29m   10.42.0.15   k3d-bigdata-server-0   <none>           <none>
+ingestor                   1/1     Running   0          29m   10.42.0.13   k3d-bigdata-server-0   <none>           <none>
+objects-69888b7969-cqk8z   1/1     Running   0          30m   10.42.0.11   k3d-bigdata-server-0   <none>           <none>
+owner                      1/1     Running   0          29m   10.42.0.12   k3d-bigdata-server-0   <none>           <none>
+
+===== 2026-10-04T15:18:11+00:00 =====
+NAME                       CPU(cores)   MEMORY(bytes)   
+analyst                    0m           2Mi             
+blocked                    0m           0Mi             
+ingestor                   353m         211Mi           
+objects-69888b7969-cqk8z   335m         338Mi           
+owner                      0m           4Mi             
+NAME                       READY   STATUS    RESTARTS   AGE   IP           NODE                   NOMINATED NODE   READINESS GATES
+analyst                    1/1     Running   0          29m   10.42.0.14   k3d-bigdata-server-0   <none>           <none>
+blocked                    1/1     Running   0          29m   10.42.0.15   k3d-bigdata-server-0   <none>           <none>
+ingestor                   1/1     Running   0          29m   10.42.0.13   k3d-bigdata-server-0   <none>           <none>
+objects-69888b7969-cqk8z   1/1     Running   0          30m   10.42.0.11   k3d-bigdata-server-0   <none>           <none>
+owner                      1/1     Running   0          29m   10.42.0.12   k3d-bigdata-server-0   <none>           <none>
+
+===== 2026-10-04T15:18:16+00:00 =====
+NAME                       CPU(cores)   MEMORY(bytes)   
+analyst                    0m           2Mi             
+blocked                    0m           0Mi             
+ingestor                   353m         211Mi           
+objects-69888b7969-cqk8z   335m         338Mi           
+owner                      0m           4Mi             
+NAME                       READY   STATUS    RESTARTS   AGE   IP           NODE                   NOMINATED NODE   READINESS GATES
+analyst                    1/1     Running   0          29m   10.42.0.14   k3d-bigdata-server-0   <none>           <none>
+blocked                    1/1     Running   0          29m   10.42.0.15   k3d-bigdata-server-0   <none>           <none>
+ingestor                   1/1     Running   0          29m   10.42.0.13   k3d-bigdata-server-0   <none>           <none>
+objects-69888b7969-cqk8z   1/1     Running   0          30m   10.42.0.11   k3d-bigdata-server-0   <none>           <none>
+owner                      1/1     Running   0          29m   10.42.0.12   k3d-bigdata-server-0   <none>           <none>
+
+===== 2026-10-04T15:18:22+00:00 =====
+NAME                       CPU(cores)   MEMORY(bytes)   
+analyst                    0m           2Mi             
+blocked                    0m           0Mi             
+ingestor                   247m         25Mi            
+objects-69888b7969-cqk8z   293m         349Mi           
+owner                      0m           4Mi             
+NAME                       READY   STATUS    RESTARTS   AGE   IP           NODE                   NOMINATED NODE   READINESS GATES
+analyst                    1/1     Running   0          29m   10.42.0.14   k3d-bigdata-server-0   <none>           <none>
+blocked                    1/1     Running   0          29m   10.42.0.15   k3d-bigdata-server-0   <none>           <none>
+ingestor                   1/1     Running   0          29m   10.42.0.13   k3d-bigdata-server-0   <none>           <none>
+objects-69888b7969-cqk8z   1/1     Running   0          30m   10.42.0.11   k3d-bigdata-server-0   <none>           <none>
+owner                      1/1     Running   0          29m   10.42.0.12   k3d-bigdata-server-0   <none>           <none>
+
+===== 2026-10-04T15:18:27+00:00 =====
+NAME                       CPU(cores)   MEMORY(bytes)   
+analyst                    0m           2Mi             
+blocked                    0m           0Mi             
+ingestor                   247m         25Mi            
+objects-69888b7969-cqk8z   293m         349Mi           
+owner                      0m           4Mi             
+NAME                       READY   STATUS    RESTARTS   AGE   IP           NODE                   NOMINATED NODE   READINESS GATES
+analyst                    1/1     Running   0          29m   10.42.0.14   k3d-bigdata-server-0   <none>           <none>
+blocked                    1/1     Running   0          29m   10.42.0.15   k3d-bigdata-server-0   <none>           <none>
+ingestor                   1/1     Running   0          29m   10.42.0.13   k3d-bigdata-server-0   <none>           <none>
+objects-69888b7969-cqk8z   1/1     Running   0          30m   10.42.0.11   k3d-bigdata-server-0   <none>           <none>
+owner                      1/1     Running   0          29m   10.42.0.12   k3d-bigdata-server-0   <none>           <none>
+
+===== 2026-10-04T15:18:33+00:00 =====
+NAME                       CPU(cores)   MEMORY(bytes)   
+analyst                    0m           2Mi             
+blocked                    0m           0Mi             
+ingestor                   247m         25Mi            
+objects-69888b7969-cqk8z   293m         349Mi           
+owner                      0m           4Mi             
+NAME                       READY   STATUS    RESTARTS   AGE   IP           NODE                   NOMINATED NODE   READINESS GATES
+analyst                    1/1     Running   0          30m   10.42.0.14   k3d-bigdata-server-0   <none>           <none>
+blocked                    1/1     Running   0          29m   10.42.0.15   k3d-bigdata-server-0   <none>           <none>
+ingestor                   1/1     Running   0          30m   10.42.0.13   k3d-bigdata-server-0   <none>           <none>
+objects-69888b7969-cqk8z   1/1     Running   0          30m   10.42.0.11   k3d-bigdata-server-0   <none>           <none>
+owner                      1/1     Running   0          30m   10.42.0.12   k3d-bigdata-server-0   <none>           <none>
+
+===== 2026-10-04T15:18:38+00:00 =====
+NAME                       CPU(cores)   MEMORY(bytes)   
+analyst                    0m           2Mi             
+blocked                    0m           0Mi             
+ingestor                   0m           24Mi            
+objects-69888b7969-cqk8z   4m           352Mi           
+owner                      0m           4Mi             
+NAME                       READY   STATUS    RESTARTS   AGE   IP           NODE                   NOMINATED NODE   READINESS GATES
+analyst                    1/1     Running   0          30m   10.42.0.14   k3d-bigdata-server-0   <none>           <none>
+blocked                    1/1     Running   0          30m   10.42.0.15   k3d-bigdata-server-0   <none>           <none>
+ingestor                   1/1     Running   0          30m   10.42.0.13   k3d-bigdata-server-0   <none>           <none>
+objects-69888b7969-cqk8z   1/1     Running   0          30m   10.42.0.11   k3d-bigdata-server-0   <none>           <none>
+owner                      1/1     Running   0          30m   10.42.0.12   k3d-bigdata-server-0   <none>           <none>
+
+===== 2026-10-04T15:18:43+00:00 =====
+NAME                       CPU(cores)   MEMORY(bytes)   
+analyst                    0m           2Mi             
+blocked                    0m           0Mi             
+ingestor                   0m           24Mi            
+objects-69888b7969-cqk8z   4m           352Mi           
+owner                      0m           4Mi             
+NAME                       READY   STATUS    RESTARTS   AGE   IP           NODE                   NOMINATED NODE   READINESS GATES
+analyst                    1/1     Running   0          30m   10.42.0.14   k3d-bigdata-server-0   <none>           <none>
+blocked                    1/1     Running   0          30m   10.42.0.15   k3d-bigdata-server-0   <none>           <none>
+ingestor                   1/1     Running   0          30m   10.42.0.13   k3d-bigdata-server-0   <none>           <none>
+objects-69888b7969-cqk8z   1/1     Running   0          30m   10.42.0.11   k3d-bigdata-server-0   <none>           <none>
+owner                      1/1     Running   0          30m   10.42.0.12   k3d-bigdata-server-0   <none>           <none>
+
+===== 2026-10-04T15:18:49+00:00 =====
+NAME                       CPU(cores)   MEMORY(bytes)   
+analyst                    0m           2Mi             
+blocked                    0m           0Mi             
+ingestor                   0m           24Mi            
+objects-69888b7969-cqk8z   3m           351Mi           
+owner                      0m           4Mi             
+NAME                       READY   STATUS    RESTARTS   AGE   IP           NODE                   NOMINATED NODE   READINESS GATES
+analyst                    1/1     Running   0          30m   10.42.0.14   k3d-bigdata-server-0   <none>           <none>
+blocked                    1/1     Running   0          30m   10.42.0.15   k3d-bigdata-server-0   <none>           <none>
+ingestor                   1/1     Running   0          30m   10.42.0.13   k3d-bigdata-server-0   <none>           <none>
+objects-69888b7969-cqk8z   1/1     Running   0          31m   10.42.0.11   k3d-bigdata-server-0   <none>           <none>
+owner                      1/1     Running   0          30m   10.42.0.12   k3d-bigdata-server-0   <none>           <none>
+
+===== 2026-10-04T15:18:54+00:00 =====
+NAME                       CPU(cores)   MEMORY(bytes)   
+analyst                    0m           2Mi             
+blocked                    0m           0Mi             
+ingestor                   0m           24Mi            
+objects-69888b7969-cqk8z   3m           351Mi           
+owner                      0m           4Mi             
+NAME                       READY   STATUS    RESTARTS   AGE   IP           NODE                   NOMINATED NODE   READINESS GATES
+analyst                    1/1     Running   0          30m   10.42.0.14   k3d-bigdata-server-0   <none>           <none>
+blocked                    1/1     Running   0          30m   10.42.0.15   k3d-bigdata-server-0   <none>           <none>
+ingestor                   1/1     Running   0          30m   10.42.0.13   k3d-bigdata-server-0   <none>           <none>
+objects-69888b7969-cqk8z   1/1     Running   0          31m   10.42.0.11   k3d-bigdata-server-0   <none>           <none>
+owner                      1/1     Running   0          30m   10.42.0.12   k3d-bigdata-server-0   <none>           <none>
+
+===== 2026-10-04T15:19:00+00:00 =====
+NAME                       CPU(cores)   MEMORY(bytes)   
+analyst                    0m           2Mi             
+blocked                    0m           0Mi             
+ingestor                   0m           24Mi            
+objects-69888b7969-cqk8z   3m           351Mi           
+owner                      0m           4Mi             
+NAME                       READY   STATUS    RESTARTS   AGE   IP           NODE                   NOMINATED NODE   READINESS GATES
+analyst                    1/1     Running   0          30m   10.42.0.14   k3d-bigdata-server-0   <none>           <none>
+blocked                    1/1     Running   0          30m   10.42.0.15   k3d-bigdata-server-0   <none>           <none>
+ingestor                   1/1     Running   0          30m   10.42.0.13   k3d-bigdata-server-0   <none>           <none>
+objects-69888b7969-cqk8z   1/1     Running   0          31m   10.42.0.11   k3d-bigdata-server-0   <none>           <none>
+owner                      1/1     Running   0          30m   10.42.0.12   k3d-bigdata-server-0   <none>           <none>
+
+===== 2026-10-04T15:19:05+00:00 =====
+NAME                       CPU(cores)   MEMORY(bytes)   
+analyst                    0m           2Mi             
+blocked                    0m           0Mi             
+ingestor                   0m           24Mi            
+objects-69888b7969-cqk8z   3m           352Mi           
+owner                      0m           4Mi             
+NAME                       READY   STATUS    RESTARTS   AGE   IP           NODE                   NOMINATED NODE   READINESS GATES
+analyst                    1/1     Running   0          30m   10.42.0.14   k3d-bigdata-server-0   <none>           <none>
+blocked                    1/1     Running   0          30m   10.42.0.15   k3d-bigdata-server-0   <none>           <none>
+ingestor                   1/1     Running   0          30m   10.42.0.13   k3d-bigdata-server-0   <none>           <none>
+objects-69888b7969-cqk8z   1/1     Running   0          31m   10.42.0.11   k3d-bigdata-server-0   <none>           <none>
+owner                      1/1     Running   0          30m   10.42.0.12   k3d-bigdata-server-0   <none>           <none>
+
+===== 2026-10-04T15:19:11+00:00 =====
+NAME                       CPU(cores)   MEMORY(bytes)   
+analyst                    0m           2Mi             
+blocked                    0m           0Mi             
+ingestor                   0m           24Mi            
+objects-69888b7969-cqk8z   3m           352Mi           
+owner                      0m           4Mi             
+NAME                       READY   STATUS    RESTARTS   AGE   IP           NODE                   NOMINATED NODE   READINESS GATES
+analyst                    1/1     Running   0          30m   10.42.0.14   k3d-bigdata-server-0   <none>           <none>
+blocked                    1/1     Running   0          30m   10.42.0.15   k3d-bigdata-server-0   <none>           <none>
+ingestor                   1/1     Running   0          30m   10.42.0.13   k3d-bigdata-server-0   <none>           <none>
+objects-69888b7969-cqk8z   1/1     Running   0          31m   10.42.0.11   k3d-bigdata-server-0   <none>           <none>
+owner                      1/1     Running   0          30m   10.42.0.12   k3d-bigdata-server-0   <none>           <none>
+

@@ -1,0 +1,20 @@
+Goodput = successful bytes / 2^20 / phase wall time (MiB/s)
+p95 = nearest-rank, rank = ceil(0.95*n) trên latency request thành công; p95 từng trial, KHÔNG lấy trung bình
+
+=== PUT ===
+c1 goodput MiB/s: [109.1623, 73.1674, 120.8997]  median=109.162
+c1 p95 ms per trial: [45.294, 40.048, 41.069]
+c4 goodput MiB/s: [89.5115, 86.9517, 96.0501]  median=89.511
+c4 p95 ms per trial: [315.371, 272.398, 276.272]
+ratio median(c4)/median(c1) = 0.820x
+
+=== GET ===
+c1 goodput MiB/s: [363.073, 367.8787, 430.2601]  median=367.879
+c1 p95 ms per trial: [25.155, 33.411, 10.732]
+c4 goodput MiB/s: [307.5001, 319.4476, 287.5459]  median=307.500
+c4 p95 ms per trial: [93.194, 81.564, 87.37]
+ratio median(c4)/median(c1) = 0.836x
+
+valid PUT = 192/192, verified GET = 192/192
+
+Kiểm tra: OK, không có sai lệch
